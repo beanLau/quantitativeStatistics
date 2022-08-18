@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
+    "moment": "^2.29.4",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -26,8 +28,7 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
+      "plugin:vue/essential"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
