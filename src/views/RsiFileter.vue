@@ -1,13 +1,13 @@
 <template>
   <div>
     <table>
-      <!-- <tr>
+       <tr>
         <th>编号</th>
         <th>日金叉</th>
         <th>周金叉</th>
         <th>月金叉</th>
         <th>当前价格</th>
-      </tr> -->
+      </tr>
       <tr v-for="(item, index) of list" :key="index">
         <td>{{ item.code }}</td>
         <td>{{ item.dayKDJ }}</td>
@@ -289,6 +289,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
