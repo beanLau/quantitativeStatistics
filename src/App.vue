@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       <router-link to="/weekkdj">weekkdj</router-link>
+      <router-link to="/weekrsi">weekrsi</router-link>
     </div>
     <router-view/>
   </div>
