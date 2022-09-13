@@ -1,6 +1,56 @@
 <template>
   <div>
-    
+    <el-table
+      :data="list"
+      style="width: 100%">
+      <el-table-column
+        prop="typeName"
+        label="类型">
+      </el-table-column>
+      <el-table-column
+        prop="code"
+        label="编号">
+      </el-table-column>
+      <el-table-column
+        prop="dayKDJ"
+        label="日金叉">
+        <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.dayKDJ ? '是':'' }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="weekKDJ"
+        label="周金叉">
+        <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.weekKDJ ? '是':'' }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="weekKDJ2"
+        label="周二次金叉">
+        <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.weekKDJ2 ? '是':'' }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="weekRsi"
+        label="周RSI最小值">
+        <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.weekRsi ? '是':'' }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="monthKDJ"
+        label="月KDJ金叉">
+        <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.monthKDJ ? '是':'' }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="price"
+        label="股价">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -24,6 +74,7 @@ export default {
   },
   methods: {
     async init() {
+      this.getData();
     },
     async getData(list, typeName){
       list = list || allCode || []
@@ -36,83 +87,42 @@ export default {
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join('')
           let weekList = await this.getWeekData(code);
-          if (weekList && this.computeIsMinRSI(weekList.rsi)) {
-            let item = {
-              typeName: typeName,
-              code: code,
-              weekKDJ: true,
-              dayKDJ: true,
-              price: 0
+          if (weekList) {
+            if(this.computeIsKDJ(weekList.kdj)){
+                let item = {
+                    typeName: typeName,
+                    code: code,
+                    weekKDJ: true,
+                    weekKDJ2: this.computeIs2KDJ(weekList.kdj),
+                    weekRsi: this.computeIsMinRSI(weekList.rsi),
+                    dayKDJ: false,
+                    monthKDJ: false,
+                    price: 0
+                }
+                let dayList = await this.getDayData(code);
+                if (dayList) {
+                let list = dayList.list;
+                if (list) {
+                    item.price = list[list.length - 1][2]
+                    if (dayList && this.computeIsKDJ(dayList.kdj)) {
+                        item.dayKDJ = true;
+                    } else if (dayList) {
+                        item.dayKDJ = false;
+                    }
+                    let mothList = await this.getMonthData(code);
+                    if (mothList && this.computeIsKDJ(mothList.kdj)) {
+                        item.monthKDJ = true;
+                    } else if (mothList) {
+                        item.monthKDJ = false;
+                    }
+                    this.list.push(item);
+                }
+                }
             }
-            this.list.push(item);
-            // let dayList = await this.getDayData(code);
-            // if (dayList) {
-            //   let list = dayList.list;
-            //   if (list) {
-            //     let item = {
-            //       code: code,
-            //       weekKDJ: true,
-            //       dayKDJ: true,
-            //       price: list[list.length - 1][2],
-            //     };
-            //     if (dayList && this.computeIsMinRSI(dayList.rsi)) {
-            //       item.dayKDJ = true;
-            //     } else if (dayList) {
-            //       item.dayKDJ = false;
-            //     }
-            //     let mothList = await this.getMonthData(code);
-            //     if (mothList && this.computeIsMinRSI(mothList.rsi)) {
-            //       item.monthKDJ = true;
-            //     } else if (mothList) {
-            //       item.monthKDJ = false;
-            //     }
-            //     this.list.push(item);
-            //   }
-            // }
-            
           }
         }
       }
       
-    },
-    async findKdjData(list) {
-      
-      // let index = 0;
-      // let length = this.codeList.length;
-      // let timer = setInterval(async () => {
-      //   let currentIndex = index % length;
-      //   let code = this.codeList[currentIndex];
-      //   let weekList = await this.getWeekData(code);
-      //   if (weekList && this.computeIsMinRSI(weekList.rsi)) {
-      //     let dayList = await this.getDayData(code);
-      //     if (!dayList) {
-      //       index++;
-      //       return;
-      //     }
-      //     let list = dayList.list;
-      //     if (list) {
-      //       let item = {
-      //         code: code,
-      //         weekKDJ: true,
-      //         dayKDJ: true,
-      //         price: list[list.length - 1][2],
-      //       };
-      //       if (dayList && this.computeIsMinRSI(dayList.rsi)) {
-      //         item.dayKDJ = true;
-      //       } else if (dayList) {
-      //         item.dayKDJ = false;
-      //       }
-      //       let mothList = await this.getMonthData(code);
-      //       if (mothList && this.computeIsMinRSI(mothList.rsi)) {
-      //         item.monthKDJ = true;
-      //       } else if (mothList) {
-      //         item.monthKDJ = false;
-      //       }
-      //       this.list.push(item);
-      //     }
-      //   }
-      //   index++;
-      // }, 200);
     },
     computeIs2KDJ(list) {
       let k = list.k;
@@ -142,9 +152,9 @@ export default {
     computeIsMinRSI(list) {
       let rsi6 = list.rsi6;
       let length = rsi6.length;
-      // if (rsi6[length - 1] > 30) {
-      //   return false;
-      // }
+      if (rsi6[length - 1] > 30) {
+        return false;
+      }
       let firstValue = rsi6[0]
       while(firstValue == 0){
         firstValue = rsi6.shift()
