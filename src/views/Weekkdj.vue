@@ -1,7 +1,10 @@
 <template>
   <div>
+    <el-button type="primary" @click="clickCb">主要按钮</el-button>
     <el-table
       :data="list"
+      max-height="500"
+      border
       style="width: 100%">
       <el-table-column
         prop="typeName"
@@ -12,38 +15,50 @@
         label="编号">
       </el-table-column>
       <el-table-column
+        prop="name"
+        label="名称">
+      </el-table-column>
+      <el-table-column
+        prop="market"
+        label="市值">
+      </el-table-column>
+      <el-table-column
+        prop="ttm"
+        label="市盈率">
+      </el-table-column>
+      <el-table-column
         prop="dayKDJ"
         label="日金叉">
         <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row.dayKDJ ? '是':'' }}</span>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.dayKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekKDJ"
         label="周金叉">
         <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row.weekKDJ ? '是':'' }}</span>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekKDJ2"
         label="周二次金叉">
         <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row.weekKDJ2 ? '是':'' }}</span>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekRsi"
         label="周RSI最小值">
         <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row.weekRsi ? '是':'' }}</span>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekRsi"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="monthKDJ"
         label="月KDJ金叉">
         <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row.monthKDJ ? '是':'' }}</span>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.monthKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
@@ -65,6 +80,8 @@ export default {
   components: {},
   data() {
     return {
+      isStop: false,
+      timer: null,
       list: [],
       codeList: [],
     };
@@ -76,9 +93,13 @@ export default {
     async init() {
       this.getData();
     },
+    clickCb(){
+      this.isStop = !this.isStop
+    },
     async getData(list, typeName){
       list = list || allCode || []
       for(let i = 0;i<list.length;i++){
+        await this.waitStop();
         let item = list[i]
         if(item.children){
           await this.getData(item.children,(typeName ? typeName + '-' : '') + item.name)
@@ -97,32 +118,50 @@ export default {
                     weekRsi: this.computeIsMinRSI(weekList.rsi),
                     dayKDJ: false,
                     monthKDJ: false,
-                    price: 0
+                    price: 0,
+                    name: ''
                 }
                 let dayList = await this.getDayData(code);
                 if (dayList) {
-                let list = dayList.list;
-                if (list) {
-                    item.price = list[list.length - 1][2]
-                    if (dayList && this.computeIsKDJ(dayList.kdj)) {
-                        item.dayKDJ = true;
-                    } else if (dayList) {
-                        item.dayKDJ = false;
-                    }
-                    let mothList = await this.getMonthData(code);
-                    if (mothList && this.computeIsKDJ(mothList.kdj)) {
-                        item.monthKDJ = true;
-                    } else if (mothList) {
-                        item.monthKDJ = false;
-                    }
-                    this.list.push(item);
-                }
+                  item.name = dayList.datas[1]
+                  item.market = dayList.datas[45]
+                  item.ttm = dayList.datas[39]
+                  let list = dayList.list;
+                  if (list) {
+                      item.price = list[list.length - 1][2]
+                      if (dayList && this.computeIsKDJ(dayList.kdj)) {
+                          item.dayKDJ = true;
+                      } else if (dayList) {
+                          item.dayKDJ = false;
+                      }
+                      let mothList = await this.getMonthData(code);
+                      if (mothList && this.computeIsKDJ(mothList.kdj)) {
+                          item.monthKDJ = true;
+                      } else if (mothList) {
+                          item.monthKDJ = false;
+                      }
+                      this.list.push(item);
+                  }
                 }
             }
           }
         }
       }
       
+    },
+    waitStop(){
+      if(!this.isStop){
+        return Promise.resolve(null)
+      }
+      return new Promise(resole=>{
+        this.timer = setInterval(()=>{
+          if(!this.isStop){
+            clearInterval(this.timer)
+            this.timer = null
+            resole(null)
+          }
+        },500)
+      })
     },
     computeIs2KDJ(list) {
       let k = list.k;
@@ -225,6 +264,7 @@ export default {
                 kdj: indicator.kdj(list),
                 rsi: indicator.rsi(list2),
                 list: list,
+                datas: res.data[code].qt[code]
               });
             }
           });
