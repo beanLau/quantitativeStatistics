@@ -44,7 +44,7 @@
         prop="weekKDJ2"
         label="周二次金叉">
         <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ2"></i>
         </template>
       </el-table-column>
       <el-table-column
