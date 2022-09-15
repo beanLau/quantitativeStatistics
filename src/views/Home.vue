@@ -1,6 +1,10 @@
 <template>
   <div>
-    
+    <div id="nav">
+      <router-link to="/">首页导航</router-link>
+      <router-link to="/weekkdj">周KDJ筛选</router-link>
+      <router-link to="/weekrsi">周RSI筛选</router-link>
+    </div>
   </div>
 </template>
 
@@ -45,31 +49,6 @@ export default {
               price: 0
             }
             this.list.push(item);
-            // let dayList = await this.getDayData(code);
-            // if (dayList) {
-            //   let list = dayList.list;
-            //   if (list) {
-            //     let item = {
-            //       code: code,
-            //       weekKDJ: true,
-            //       dayKDJ: true,
-            //       price: list[list.length - 1][2],
-            //     };
-            //     if (dayList && this.computeIsMinRSI(dayList.rsi)) {
-            //       item.dayKDJ = true;
-            //     } else if (dayList) {
-            //       item.dayKDJ = false;
-            //     }
-            //     let mothList = await this.getMonthData(code);
-            //     if (mothList && this.computeIsMinRSI(mothList.rsi)) {
-            //       item.monthKDJ = true;
-            //     } else if (mothList) {
-            //       item.monthKDJ = false;
-            //     }
-            //     this.list.push(item);
-            //   }
-            // }
-            
           }
         }
       }
@@ -316,5 +295,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+a{
+  margin: 10px;
 }
 </style>

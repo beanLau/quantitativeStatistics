@@ -23,6 +23,14 @@
         label="市值">
       </el-table-column>
       <el-table-column
+        prop="chg"
+        label="涨跌幅">
+        <template slot-scope="scope">
+          <span style="color: red;" v-if="scope.row.chg >= 0">{{scope.row.chg}}%</span>
+          <span style="color: green;" v-else>{{scope.row.chg}}%</span>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="ttm"
         label="市盈率">
       </el-table-column>
@@ -62,8 +70,15 @@
         </template>
       </el-table-column>
       <el-table-column
-        prop="price"
-        label="股价">
+        fixed="right"
+        label="操作"
+        width="100">
+        <template slot-scope="scope">
+          <a :href="getHref(scope.row)" target="_blank">资金流入</a>
+          <a :href="getHref2(scope.row)" target="_blank">流入统计</a>
+          <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+          <el-button type="text" size="small">编辑</el-button> -->
+        </template>
       </el-table-column>
     </el-table>
   </div>
@@ -90,6 +105,12 @@ export default {
     this.init();
   },
   methods: {
+    getHref(item){
+      return `https://api.mairui.club/hsmy/zjlr/${item.code.replace('sh','').replace('sz','')}/75711c5d92566892c4`
+    },
+    getHref2(item){
+      return `https://api.mairui.club/hsmy/jddxt/${item.code.replace('sh','').replace('sz','')}/75711c5d92566892c4`
+    },
     async init() {
       this.getData();
     },
@@ -124,8 +145,9 @@ export default {
                 let dayList = await this.getDayData(code);
                 if (dayList) {
                   item.name = dayList.datas[1]
-                  item.market = dayList.datas[45]
-                  item.ttm = dayList.datas[39]
+                  item.market = dayList.datas[45] //市值
+                  item.ttm = dayList.datas[39] //市盈率
+                  item.chg = dayList.datas[32]
                   let list = dayList.list;
                   if (list) {
                       item.price = list[list.length - 1][2]
