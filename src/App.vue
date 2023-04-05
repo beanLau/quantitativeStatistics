@@ -4,6 +4,8 @@
       <router-link to="/">Home</router-link>
       <router-link to="/weekkdj">weekkdj</router-link>
       <router-link to="/weekrsi">weekrsi</router-link>
+      <router-link to="/monthrsi">monthrsi</router-link>
+      <router-link to="/monthkdj">monthkdj</router-link>
     </div>
     <router-view/>
   </div>

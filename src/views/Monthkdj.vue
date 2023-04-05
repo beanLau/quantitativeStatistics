@@ -59,7 +59,17 @@
           ></i>
         </template>
       </el-table-column>
-      <el-table-column prop="monthKDJ" label="月KDJ金叉">
+      <el-table-column prop="monthRsi" label="月RSI最小值">
+        <template slot-scope="scope">
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: #409eff"
+            v-if="scope.row.monthRsi"
+          ></i>
+        </template>
+      </el-table-column>
+      <el-table-column prop="monthKDJ" label="月kdj金叉">
         <template slot-scope="scope">
           <i
             class="el-icon-success"
@@ -72,6 +82,22 @@
             type="primary"
             style="color: #409eff"
             v-if="scope.row.monthKDJ == 2"
+          ></i>
+        </template>
+      </el-table-column>
+      <el-table-column prop="monthKDJ2" label="月kdj2次金叉">
+        <template slot-scope="scope">
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: rgb(223 236 249)"
+            v-if="scope.row.monthKDJ2 == 1"
+          ></i>
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: #409eff"
+            v-if="scope.row.monthKDJ2 == 2"
           ></i>
         </template>
       </el-table-column>
@@ -121,19 +147,21 @@ export default {
           let arr = item.id.split(".");
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
-          let weekList = await this.getWeekData(code);
-
-          if (weekList) {
-            let kdjValue = this.computeIsKDJ(weekList.kdj);
+          let monthList = await this.getMonthData(code);
+          if (monthList) {
+            let kdjValue = this.computeIsKDJ(monthList.kdj);
             if (kdjValue) {
               let item = {
                 typeName: typeName,
                 code: code,
-                weekKDJ: kdjValue,
-                weekKDJ2: this.computeIs2KDJ(weekList.kdj),
-                weekRsi: this.computeIsMinRSI(weekList.rsi),
-                dayKDJ: 0,
-                monthKDJ: 0,
+                weekKDJ: false,
+                weekKDJ2: false,
+                weekRsi: false,
+                monthRsi: true,
+                dayKDJ: false,
+                monthKDJ: kdjValue,
+                monthKDJ2: this.computeIs2KDJ(monthList.kdj),
+                monthRsi: this.computeIsMinRSI(monthList.rsi),
                 price: 0,
                 name: "",
               };
@@ -146,8 +174,21 @@ export default {
                 if (list) {
                   item.price = list[list.length - 1][2];
                   item.dayKDJ = this.computeIsKDJ(dayList.kdj);
-                  let mothList = await this.getMonthData(code);
-                  item.monthKDJ = this.computeIsKDJ(mothList.kdj);
+
+                  let weekList = await this.getWeekData(code);
+                  if (weekList && this.computeIsMinRSI(weekList.rsi)) {
+                    item.weekRsi = true;
+                  } else if (weekList) {
+                    item.weekRsi = false;
+                  }
+
+                  if (weekList) {
+                    item.weekKDJ = this.computeIsKDJ(weekList.kdj);
+                  }
+
+                  if (weekList) {
+                    item.weekKDJ2 = this.computeIs2KDJ(weekList.kdj);
+                  }
                   this.list.push(item);
                 }
               }
@@ -176,7 +217,7 @@ export default {
       let j = list.j;
       let length = k.length;
       if (j[length - 1] > 30) {
-        return false;
+        return 0;
       }
       let allList = k.map((k, index) => {
         return [k, d[index], j[index]];
@@ -185,14 +226,19 @@ export default {
         allList.filter((item) => {
           return item[2] > item[0];
         }).length == 1;
+      if(hasOneKDJ){
+        return 2
+      }
       let willKDJ =
         Math.abs(j[length - 1] - k[length - 1]) <= 5 &&
         j[length - 1] < k[length - 1] &&
         Math.abs(j[length - 2] - k[length - 2]) >
           Math.abs(j[length - 1] - k[length - 1]) &&
         j[length - 2] < k[length - 2];
-
-      return willKDJ && hasOneKDJ;
+      if(willKDJ){
+        return 1
+      }
+      return 0
     },
 
     computeIsMinRSI(list) {
