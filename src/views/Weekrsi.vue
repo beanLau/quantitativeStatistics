@@ -1,106 +1,135 @@
 <template>
   <div>
     <el-button type="primary" @click="clickCb">主要按钮</el-button>
-    <el-table
-      :data="list"
-      max-height="500"
-      border
-      style="width: 100%">
-      <el-table-column
-        prop="typeName"
-        label="类型">
-      </el-table-column>
-      <el-table-column
-        prop="code"
-        label="编号">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="名称">
-      </el-table-column>
-      <el-table-column
-        prop="market"
-        label="市值">
-      </el-table-column>
-      <el-table-column
-        prop="ttm"
-        label="市盈率">
-      </el-table-column>
-      <el-table-column
-        prop="chg"
-        label="涨跌幅">
+    <el-table :data="list" max-height="500" border style="width: 100%">
+      <el-table-column prop="typeName" label="类型"> </el-table-column>
+      <el-table-column prop="code" label="编号">
         <template slot-scope="scope">
-          <span style="color: red;" v-if="scope.row.chg >= 0">{{scope.row.chg}}%</span>
-          <span style="color: green;" v-else>{{scope.row.chg}}%</span>
+          <div style="font-size:12px;">
+            <div>编号: {{scope.row.code}}</div>
+            <div>名称: {{scope.row.name}}</div>
+            <div>{{scope.row.market}}--{{scope.row.ttm}}</div>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column prop="name" label="名称"> </el-table-column> -->
+      <!-- <el-table-column prop="market" label="市值"> </el-table-column>
+      <el-table-column prop="ttm" label="市盈率"> </el-table-column> -->
+      <!-- <el-table-column
         prop="dayKDJ"
-        label="日KDJ">
+        label="日金叉">
         <template slot-scope="scope">
           <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.dayKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekKDJ"
-        label="周KDJ">
+        label="周金叉">
         <template slot-scope="scope">
           <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekKDJ2"
-        label="周KDJ2">
+        label="周二次金叉">
         <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ2"></i>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
+        </template>
+      </el-table-column> -->
+      <el-table-column prop="weekKDJ" width="250px" label="周RSI" style="padding:0;">
+        <template slot-scope="scope">
+          <svg width="250px" height="50px">
+            <polyline
+              width="350px"
+              height="50px"
+              :points="getRsiPoints(scope.row.weekRsi.list.rsi6)"
+              style="fill: none; stroke: #666; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="350px"
+              height="50px"
+              :points="getRsiPoints(scope.row.weekRsi.list.rsi12)"
+              style="fill: none; stroke: #f4c063; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="350px"
+              height="50px"
+              :points="getRsiPoints(scope.row.weekRsi.list.rsi24)"
+              style="fill: none; stroke: #b663f4; stroke-width: 1px"
+            ></polyline>
+          </svg>
         </template>
       </el-table-column>
-      <el-table-column
-        prop="weekWillKDJ2"
-        label="周KDJ2-W">
+      <el-table-column prop="weekRsi" label="周RSI-Min">
         <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekWillKDJ2"></i>
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: rgb(223 236 249)"
+            v-if="scope.row.weekRsi.value == 1"
+          ></i>
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: #409eff"
+            v-if="scope.row.weekRsi.value == 2"
+          ></i>
+          {{ scope.row.weekRsi.last }}
         </template>
       </el-table-column>
-      <el-table-column
-        prop="weekRsi"
-        label="周RSI">
+      <el-table-column prop="weekKDJ" width="250px" label="周RSI" style="padding:0;">
         <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekRsi"></i>
+          <svg width="250px" height="50px">
+            <polyline
+              width="350px"
+              height="50px"
+              :points="getRsiPoints(scope.row.monthRsi.list.rsi6)"
+              style="fill: none; stroke: #666; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="350px"
+              height="50px"
+              :points="getRsiPoints(scope.row.monthRsi.list.rsi12)"
+              style="fill: none; stroke: #f4c063; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="350px"
+              height="50px"
+              :points="getRsiPoints(scope.row.monthRsi.list.rsi24)"
+              style="fill: none; stroke: #b663f4; stroke-width: 1px"
+            ></polyline>
+          </svg>
         </template>
       </el-table-column>
-      <el-table-column
-        prop="weekMinRsi15"
-        label="周Rsi15">
+
+      <el-table-column prop="monthRsi" label="月RSI-Min">
         <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekMinRsi15"></i>
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: rgb(223 236 249)"
+            v-if="scope.row.monthRsi.value == 1"
+          ></i>
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: #409eff"
+            v-if="scope.row.monthRsi.value == 2"
+          ></i>
+          {{ scope.row.monthRsi.last }}
         </template>
       </el-table-column>
-      <el-table-column
-        prop="monthKDJ"
-        label="月KDJ">
+      <!-- <el-table-column prop="monthKDJ" label="月kdj金叉">
         <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.monthKDJ"></i>
+          <i
+            class="el-icon-success"
+            type="primary"
+            style="color: #409eff"
+            v-if="scope.row.monthKDJ"
+          ></i>
         </template>
-      </el-table-column>
-      <el-table-column
-        prop="monthRsi"
-        label="月RSI">
-        <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.monthRsi"></i>
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="monthMinRsi15"
-        label="月RSI15">
-        <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.monthMinRsi15"></i>
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="price"
-        label="股价">
-      </el-table-column>
+      </el-table-column> -->
+      <el-table-column prop="price" label="股价"> </el-table-column>
     </el-table>
   </div>
 </template>
@@ -108,9 +137,9 @@
 <script>
 import request from "../utils/request";
 import indicator from "../utils/indicator";
-import moment from "moment";
-import allCode from "../all.js"
-let allCodeList = [allCode[0]]
+import moment, { min } from "moment";
+import allCode from "../all.js";
+let allCodeList = [allCode[0]];
 export default {
   name: "Home",
   components: {},
@@ -126,102 +155,122 @@ export default {
     this.init();
   },
   methods: {
+    getRsiPoints(rsi) {
+      let cha = rsi.length - 30;
+      if (cha > 0) {
+        rsi = rsi.splice(cha);
+      }
+      rsi = [...rsi];
+      let str = "";
+      let arr = rsi.map(item=>{
+        return 50 - (item)/1.5
+      })
+      let min = Math.min(...arr)
+      if(min < 0){
+        arr = arr.map(item=>{
+          item += -min
+          item += 2
+          return item
+        })
+      }
+      arr.map((item, index) => {
+        str += ` ${index * 8},${item.toFixed(2)} `;
+      });
+      return str;
+    },
     async init() {
       this.getData();
     },
-    clickCb(){
-      this.isStop = !this.isStop
+    clickCb() {
+      this.isStop = !this.isStop;
     },
-    async getData(list, typeName){
-      list = list || allCode || []
-      for(let i = 0;i<list.length;i++){
+    async getData(list, typeName) {
+      list = list || allCode || [];
+      for (let i = 0; i < list.length; i++) {
         await this.waitStop();
-        let item = list[i]
-        if(item.children){
-          await this.getData(item.children,(typeName ? typeName + '-' : '') + item.name)
-        }else{
-          let arr = item.id.split('.')
+        let item = list[i];
+        if (item.children) {
+          await this.getData(
+            item.children,
+            (typeName ? typeName + "-" : "") + item.name
+          );
+        } else {
+          let arr = item.id.split(".");
           arr[1] = arr[1].toLocaleLowerCase();
-          let code = arr.reverse().join('')
+          let code = arr.reverse().join("");
           let weekList = await this.getWeekData(code);
           if (weekList) {
-            if(this.computeIsMinRSI(weekList.rsi)){
-                let item = {
-                    typeName: typeName,
-                    code: code,
-                    weekKDJ: this.computeIsKDJ(weekList.kdj),
-                    weekKDJ2: this.computeIs2KDJ(weekList.kdj).dkj,
-                    weekWillKDJ2: this.computeIs2KDJ(weekList.kdj).willkdj,
-                    weekRsi: true,
-                    weekMinRsi15: this.computeIsMin15RSI(weekList.rsi),
-                    dayKDJ: false,
-                    monthKDJ: false,
-                    monthRsi: false,
-                    monthMinRsi15: false,
-                    price: 0,
-                    name: ''
-                }
-                let dayList = await this.getDayData(code);
-                if (dayList) {
-                  item.name = dayList.datas[1]
-                  item.market = dayList.datas[45]
-                  item.ttm = dayList.datas[39]
-                  item.chg = dayList.datas[32]
-                  let list = dayList.list;
-                  if (list) {
-                      item.price = list[list.length - 1][2]
-                      if (dayList && this.computeIsKDJ(dayList.kdj)) {
-                          item.dayKDJ = true;
-                      } else if (dayList) {
-                          item.dayKDJ = false;
-                      }
-                      let mothList = await this.getMonthData(code);
-                      if (mothList) {
-                        if(this.computeIsKDJ(mothList.kdj)){
-                          item.monthKDJ = true;
-                        }
-                        if(this.computeIsMinRSI(mothList.rsi)){
-                          item.monthRsi = true;
-                        }
-                        if(this.computeIsMin15RSI(mothList.rsi)){
-                          item.monthMinRsi15 = true;
-                        }
-                      } else if (mothList) {
-                          item.monthKDJ = false;
-                      }
-                      this.list.push(item);
+            let rsidata = this.computeIsMinRSI(weekList.rsi);
+            if (rsidata.value) {
+              let item = {
+                typeName: typeName,
+                code: code,
+                weekKDJ: false,
+                weekKDJ2: false,
+                weekRsi: rsidata,
+                monthRsi: 0,
+                dayKDJ: false,
+                monthKDJ: this.computeIsKDJ(weekList.kdj),
+                price: 0,
+                name: "",
+              };
+              let dayList = await this.getDayData(code);
+              if (dayList) {
+                item.name = dayList.datas[1];
+                item.market = dayList.datas[45];
+                item.ttm = dayList.datas[39];
+                let list = dayList.list;
+                if (list) {
+                  item.price = list[list.length - 1][2];
+                  if (dayList && this.computeIsKDJ(dayList.kdj)) {
+                    item.dayKDJ = true;
+                  } else if (dayList) {
+                    item.dayKDJ = false;
                   }
+                  let monthList = await this.getMonthData(code);
+                  let monthrsi = this.computeIsMinRSI(monthList.rsi);
+                  item.monthRsi = monthrsi;
+                  if (monthList && this.computeIsKDJ(monthList.kdj)) {
+                    item.monthKDJ = true;
+                  } else if (monthList) {
+                    item.monthKDJ = false;
+                  }
+
+                  if (monthList && this.computeIs2KDJ(monthList.kdj)) {
+                    item.monthKDJ2 = true;
+                  } else if (monthList) {
+                    item.monthKDJ2 = false;
+                  }
+                  this.list.push(item);
                 }
+              }
             }
           }
         }
       }
-      
     },
-    waitStop(){
-      if(!this.isStop){
-        return Promise.resolve(null)
+    waitStop() {
+      if (!this.isStop) {
+        return Promise.resolve(null);
       }
-      return new Promise(resole=>{
-        this.timer = setInterval(()=>{
-          if(!this.isStop){
-            clearInterval(this.timer)
-            this.timer = null
-            resole(null)
+      return new Promise((resole) => {
+        this.timer = setInterval(() => {
+          if (!this.isStop) {
+            clearInterval(this.timer);
+            this.timer = null;
+            resole(null);
           }
-        },500)
-      })
+        }, 500);
+      });
     },
     computeIs2KDJ(list) {
       let k = list.k;
       let d = list.d;
       let j = list.j;
       let length = k.length;
-      // if (j[length - 1] > 30) {
-      //   return {
-      //     kd
-      //   };
-      // }
+      if (j[length - 1] > 30) {
+        return false;
+      }
       let allList = k.map((k, index) => {
         return [k, d[index], j[index]];
       });
@@ -235,53 +284,66 @@ export default {
         Math.abs(j[length - 2] - k[length - 2]) >
           Math.abs(j[length - 1] - k[length - 1]) &&
         j[length - 2] < k[length - 2];
-      
-      return {
-        kdj: allList.filter((item) => {
-          return item[2] > item[0];
-        }).length > 2 && j[length - 1] > k[length - 1] && j[length - 2] <= k[length - 2],
-        willdkj: willKDJ && hasOneKDJ
-      }
+
+      return willKDJ && hasOneKDJ;
     },
-    computeIsMin15RSI(list){
-      let rsi6 = list.rsi6;
-      let length = rsi6.length;
-      if(rsi6[length - 1] <= 15){
-        return true
-      }
-      return false
-    },
+
     computeIsMinRSI(list) {
       let rsi6 = list.rsi6;
       let length = rsi6.length;
-      if (rsi6[length - 1] > 30) {
-        return false;
-      }
-      let firstValue = rsi6[0]
-      while(firstValue == 0){
-        firstValue = rsi6.shift()
-      }
-      if(rsi6.length > 30){
-        rsi6 = rsi6.slice(rsi6.length - 30)
+      // if (rsi6[length - 1] > 30) {
+      //   return false;
+      // }
+      let firstValue = rsi6[0];
+      // while(firstValue == 0){
+      //   firstValue = rsi6.shift()
+      // }
+      while (rsi6.length > 30) {
+        rsi6.shift();
       }
       let isMin = true;
       let minPrice = Math.min(...rsi6);
-      let lastPrice = rsi6[rsi6.length - 1]
-      for(let i=0;i<rsi6.length - 1;i++){
-        if(rsi6[i] < lastPrice){
-          isMin = false
+      let lastPrice = rsi6[rsi6.length - 1];
+      for (let i = 0; i < rsi6.length - 1; i++) {
+        if (rsi6[i] < lastPrice) {
+          isMin = false;
         }
       }
-      return isMin || Math.abs(minPrice - lastPrice) < 1
+      if (isMin && lastPrice >= 40) {
+        isMin = false;
+      }
+      //let lastValue = rsi6[rsi6.length - 1]
+      // let index = rsi6.sort().findIndex(item=>{
+      //   return item == lastValue
+      // })
+      let value = 0;
+      if (isMin) {
+        value = 1;
+      } else if (Math.abs(minPrice - lastPrice) < 1) {
+        value = 2;
+      }
+      let minLength = Math.min(
+        list.rsi6.length,
+        list.rsi12.length,
+        list.rsi24.length
+      );
+      list.rsi6 = list.rsi6.splice(list.rsi6.length - minLength);
+      list.rsi12 = list.rsi12.splice(list.rsi12.length - minLength);
+      list.rsi24 = list.rsi24.splice(list.rsi24.length - minLength);
+      return {
+        list: list,
+        value: value,
+        last: parseFloat(lastPrice).toFixed(2),
+      };
     },
     computeIsKDJ(list) {
       let k = list.k;
       let d = list.d;
       let j = list.j;
       let length = k.length;
-      // if (j[length - 1] > 30) {
-      //   return false;
-      // }
+      if (j[length - 1] > 30) {
+        return false;
+      }
       if (j[length - 1] > k[length - 1] && j[length - 2] <= k[length - 2]) {
         return true;
       } else if (
@@ -309,7 +371,7 @@ export default {
           .then((res) => {
             let qfqday = res.data[code].qfqday || [];
             let list = [];
-            let list2 = []
+            let list2 = [];
             qfqday.map((item) => {
               item.map((price, index) => {
                 if (index) {
@@ -318,7 +380,7 @@ export default {
               });
               //最高，最低，收盘
               list.push([item[3], item[4], item[2]]);
-              list2.push(item[2])
+              list2.push(item[2]);
             });
             if (list.length == 0) {
               resole(null);
@@ -327,7 +389,7 @@ export default {
                 kdj: indicator.kdj(list),
                 rsi: indicator.rsi(list2),
                 list: list,
-                datas: res.data[code].qt[code]
+                datas: res.data[code].qt[code],
               });
             }
           });
@@ -338,7 +400,7 @@ export default {
       return new Promise((resole) => {
         let endTime = moment().format("YYYY-MM-DD");
         let beginTime = moment(
-          Date.now() - 1000 * 60 * 60 * 24 * 30 * 12
+          Date.now() - 1000 * 60 * 60 * 24 * 30 * 12 * 3
         ).format("YYYY-MM-DD");
         request
           .get(
@@ -347,7 +409,7 @@ export default {
           .then((res) => {
             let qfqweek = res.data[code].qfqweek || [];
             let list = [];
-            let list2 = []
+            let list2 = [];
             qfqweek.map((item) => {
               item.map((price, index) => {
                 if (index) {
@@ -356,21 +418,24 @@ export default {
               });
               //最高，最低，收盘
               list.push([item[3], item[4], item[2]]);
-              list2.push(item[2])
+              list2.push(item[2]);
             });
             if (list.length == 0) {
               resole(null);
             } else {
-              let awaitTime = Date.now() - oldTime
-              if(awaitTime > 0){
-                setTimeout(()=>{
-                  resole({
-                    kdj: indicator.kdj(list),
-                    rsi: indicator.rsi(list2),
-                    list: list,
-                  });
-                },awaitTime < 50 ? 50-awaitTime: 50)
-                return
+              let awaitTime = Date.now() - oldTime;
+              if (awaitTime > 0) {
+                setTimeout(
+                  () => {
+                    resole({
+                      kdj: indicator.kdj(list),
+                      rsi: indicator.rsi(list2),
+                      list: list,
+                    });
+                  },
+                  awaitTime < 50 ? 50 - awaitTime : 50
+                );
+                return;
               }
               resole({
                 kdj: indicator.kdj(list),
@@ -386,7 +451,7 @@ export default {
       return new Promise((resole) => {
         let endTime = moment().format("YYYY-MM-DD");
         let beginTime = moment(
-          Date.now() - 1000 * 60 * 60 * 24 * 30 * 30
+          Date.now() - 1000 * 60 * 60 * 24 * 365 * 5
         ).format("YYYY-MM-DD");
         request
           .get(
@@ -404,7 +469,7 @@ export default {
               });
               //最高，最低，收盘
               list.push([item[3], item[4], item[2]]);
-              list2.push(item[2])
+              list2.push(item[2]);
             });
             if (list.length == 0) {
               resole(null);
