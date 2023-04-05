@@ -27,38 +27,74 @@
         label="市盈率">
       </el-table-column>
       <el-table-column
+        prop="chg"
+        label="涨跌幅">
+        <template slot-scope="scope">
+          <span style="color: red;" v-if="scope.row.chg >= 0">{{scope.row.chg}}%</span>
+          <span style="color: green;" v-else>{{scope.row.chg}}%</span>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="dayKDJ"
-        label="日金叉">
+        label="日KDJ">
         <template slot-scope="scope">
           <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.dayKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekKDJ"
-        label="周金叉">
+        label="周KDJ">
         <template slot-scope="scope">
           <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekKDJ2"
-        label="周二次金叉">
+        label="周KDJ2">
         <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ2"></i>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="weekWillKDJ2"
+        label="周KDJ2-W">
+        <template slot-scope="scope">
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekWillKDJ2"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekRsi"
-        label="周RSI最小值">
+        label="周RSI">
         <template slot-scope="scope">
           <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekRsi"></i>
         </template>
       </el-table-column>
       <el-table-column
+        prop="weekMinRsi15"
+        label="周Rsi15">
+        <template slot-scope="scope">
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekMinRsi15"></i>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="monthKDJ"
-        label="月KDJ金叉">
+        label="月KDJ">
         <template slot-scope="scope">
           <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.monthKDJ"></i>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="monthRsi"
+        label="月RSI">
+        <template slot-scope="scope">
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.monthRsi"></i>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="monthMinRsi15"
+        label="月RSI15">
+        <template slot-scope="scope">
+          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.monthMinRsi15"></i>
         </template>
       </el-table-column>
       <el-table-column
@@ -114,10 +150,14 @@ export default {
                     typeName: typeName,
                     code: code,
                     weekKDJ: this.computeIsKDJ(weekList.kdj),
-                    weekKDJ2: this.computeIs2KDJ(weekList.kdj),
+                    weekKDJ2: this.computeIs2KDJ(weekList.kdj).dkj,
+                    weekWillKDJ2: this.computeIs2KDJ(weekList.kdj).willkdj,
                     weekRsi: true,
+                    weekMinRsi15: this.computeIsMin15RSI(weekList.rsi),
                     dayKDJ: false,
                     monthKDJ: false,
+                    monthRsi: false,
+                    monthMinRsi15: false,
                     price: 0,
                     name: ''
                 }
@@ -126,6 +166,7 @@ export default {
                   item.name = dayList.datas[1]
                   item.market = dayList.datas[45]
                   item.ttm = dayList.datas[39]
+                  item.chg = dayList.datas[32]
                   let list = dayList.list;
                   if (list) {
                       item.price = list[list.length - 1][2]
@@ -135,8 +176,16 @@ export default {
                           item.dayKDJ = false;
                       }
                       let mothList = await this.getMonthData(code);
-                      if (mothList && this.computeIsKDJ(mothList.kdj)) {
+                      if (mothList) {
+                        if(this.computeIsKDJ(mothList.kdj)){
                           item.monthKDJ = true;
+                        }
+                        if(this.computeIsMinRSI(mothList.rsi)){
+                          item.monthRsi = true;
+                        }
+                        if(this.computeIsMin15RSI(mothList.rsi)){
+                          item.monthMinRsi15 = true;
+                        }
                       } else if (mothList) {
                           item.monthKDJ = false;
                       }
@@ -168,9 +217,11 @@ export default {
       let d = list.d;
       let j = list.j;
       let length = k.length;
-      if (j[length - 1] > 30) {
-        return false;
-      }
+      // if (j[length - 1] > 30) {
+      //   return {
+      //     kd
+      //   };
+      // }
       let allList = k.map((k, index) => {
         return [k, d[index], j[index]];
       });
@@ -184,10 +235,22 @@ export default {
         Math.abs(j[length - 2] - k[length - 2]) >
           Math.abs(j[length - 1] - k[length - 1]) &&
         j[length - 2] < k[length - 2];
-
-      return willKDJ && hasOneKDJ;
+      
+      return {
+        kdj: allList.filter((item) => {
+          return item[2] > item[0];
+        }).length > 2 && j[length - 1] > k[length - 1] && j[length - 2] <= k[length - 2],
+        willdkj: willKDJ && hasOneKDJ
+      }
     },
-
+    computeIsMin15RSI(list){
+      let rsi6 = list.rsi6;
+      let length = rsi6.length;
+      if(rsi6[length - 1] <= 15){
+        return true
+      }
+      return false
+    },
     computeIsMinRSI(list) {
       let rsi6 = list.rsi6;
       let length = rsi6.length;
@@ -216,9 +279,9 @@ export default {
       let d = list.d;
       let j = list.j;
       let length = k.length;
-      if (j[length - 1] > 30) {
-        return false;
-      }
+      // if (j[length - 1] > 30) {
+      //   return false;
+      // }
       if (j[length - 1] > k[length - 1] && j[length - 2] <= k[length - 2]) {
         return true;
       } else if (

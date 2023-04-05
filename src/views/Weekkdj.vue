@@ -101,6 +101,12 @@ export default {
     this.init();
   },
   methods: {
+    getHref(item){
+      return `https://api.mairui.club/hsmy/zjlr/${item.code.replace('sh','').replace('sz','')}/75711c5d92566892c4`
+    },
+    getHref2(item){
+      return `https://api.mairui.club/hsmy/jddxt/${item.code.replace('sh','').replace('sz','')}/75711c5d92566892c4`
+    },
     async init() {
       this.getData();
     },
