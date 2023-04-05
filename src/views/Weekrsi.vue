@@ -8,7 +8,7 @@
           <div style="font-size:12px;">
             <div>编号: {{scope.row.code}}</div>
             <div>名称: {{scope.row.name}}</div>
-            <div>{{scope.row.market}}--{{scope.row.ttm}}</div>
+            <div>{{scope.row.market}}（亿）    {{scope.row.ttm}}</div>
           </div>
         </template>
       </el-table-column>
