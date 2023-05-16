@@ -12,136 +12,17 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="dayKDJ" label="日金叉">
-        <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: rgb(223 236 249)"
-            v-if="scope.row.dayKDJ.value == 1"
-          ></i>
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.dayKDJ.value == 2"
-          ></i>
-        </template>
-      </el-table-column>
-      <!-- <el-table-column
-        prop="weekKDJ"
-        width="270px"
-        label="周kdj"
-        style="padding: 0"
-      >
-        <template slot-scope="scope">
-          <svg width="270px" height="65px">
-            <polyline
-              width="250px"
-              height="65px"
-              :points="getKdjPoints(scope.row.weekKDJ.list.k)"
+      <el-table-column prop="weekKDJ" width="250px" label="量" style="padding:0;">
+        <template slot-scope="">
+          <svg width="250px" height="50px">
+            <!-- <polyline
+              width="350px"
+              height="50px"
+              :points="getCountPoints(scope.row.qfqday)"
               style="fill: none; stroke: #666; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="250px"
-              height="65px"
-              :points="getKdjPoints(scope.row.weekKDJ.list.d)"
-              style="fill: none; stroke: #f4c063; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="250px"
-              height="65px"
-              :points="getKdjPoints(scope.row.weekKDJ.list.j)"
-              style="fill: none; stroke: #b663f4; stroke-width: 1px"
-            ></polyline>
+            ></polyline> -->
+            <!-- <line v-for="item" x="0" y="0" fill="red" height="100" width="2"> </line> -->
           </svg>
-        </template>
-      </el-table-column> -->
-      <el-table-column prop="weekKDJ" label="周金叉">
-        <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: rgb(223 236 249)"
-            v-if="scope.row.weekKDJ.value == 1"
-          ></i>
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.weekKDJ.value == 2"
-          ></i>
-        </template>
-      </el-table-column>
-      <!-- <el-table-column prop="weekKDJ2" label="周二次金叉">
-        <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: rgb(223 236 249)"
-            v-if="scope.row.weekKDJ2 == 1"
-          ></i>
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.weekKDJ2 == 2"
-          ></i>
-        </template>
-      </el-table-column> -->
-      <!-- <el-table-column prop="weekRsi" label="周RSI最小值">
-        <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.weekRsi"
-          ></i>
-        </template>
-      </el-table-column> -->
-      <!-- <el-table-column
-        prop="weekKDJ"
-        width="270px"
-        label="月kdj"
-        style="padding: 0"
-      >
-        <template slot-scope="scope">
-          <svg width="270px" height="65px">
-            <polyline
-              width="250px"
-              height="65px"
-              :points="getKdjPoints(scope.row.monthKDJ.list.k)"
-              style="fill: none; stroke: #666; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="250px"
-              height="65px"
-              :points="getKdjPoints(scope.row.monthKDJ.list.d)"
-              style="fill: none; stroke: #f4c063; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="250px"
-              height="65px"
-              :points="getKdjPoints(scope.row.monthKDJ.list.j)"
-              style="fill: none; stroke: #b663f4; stroke-width: 1px"
-            ></polyline>
-          </svg>
-        </template>
-      </el-table-column> -->
-      <el-table-column prop="monthKDJ" label="月KDJ金叉">
-        <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: rgb(223 236 249)"
-            v-if="scope.row.monthKDJ.value == 1"
-          ></i>
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.monthKDJ.value == 2"
-          ></i>
         </template>
       </el-table-column>
       <el-table-column prop="price" label="股价"> </el-table-column>
@@ -170,6 +51,9 @@ export default {
     this.init();
   },
   methods: {
+    getCountPoints(list){
+      return '0,80 5,20 10,40'
+    },
     getKdjPoints(list) {
       list = [...list];
       // let cha = list.length - 52;
@@ -209,11 +93,37 @@ export default {
     clickCb() {
       this.isStop = !this.isStop;
     },
+    isMaxAmount(list){
+      let listData = [...list]
+      let lastCount = listData.pop()[5]
+      let totalCount = 0
+      for(let i = 0;i< 5 ;i++){
+        let item = listData.pop()
+        totalCount += item[5]
+      }
+      if(lastCount >= totalCount){
+        console.log(list[list.length - 1][5],totalCount, list[list.length - 2][5],list[list.length - 3][5],list[list.length - 4][5],list[list.length - 5][5],list[list.length - 6][5])
+        return true
+      }
+      // totalCount = 0
+      // lastCount += listData.pop()[5]
+      // for(let i = 0; i< 7 ;i++){
+      //   let item = listData.pop()
+      //   totalCount += item[5]
+      // }
+      // if(lastCount >= totalCount){
+      //   console.log(list[list.length - 1][5],list[list.length - 1][5],list[list.length - 1][5],list[list.length - 1][5],list[list.length - 1][5],list[list.length - 1][5])
+      //   return true
+      // }
+      return false
+    },
     async getData(list, typeName) {
+      
       list = list || allCode || [];
       for (let i = 0; i < list.length; i++) {
         await this.waitStop();
         let item = list[i];
+        
         if (item.children) {
           await this.getData(
             item.children,
@@ -223,38 +133,49 @@ export default {
           let arr = item.id.split(".");
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
-          let weekList = await this.getWeekData(code);
-
-          if (weekList) {
-            let kdjValue = this.computeIsKDJ(weekList.kdj);
-            if (kdjValue.value) {
-              let item = {
-                typeName: typeName,
-                code: code,
-                weekKDJ: kdjValue,
-                weekKDJ2: this.computeIs2KDJ(weekList.kdj),
-                weekRsi: this.computeIsMinRSI(weekList.rsi),
-                dayKDJ: 0,
-                monthKDJ: 0,
-                price: 0,
-                name: "",
-              };
-              let dayList = await this.getDayData(code);
-              if (dayList) {
-                item.name = dayList.datas[1];
-                item.market = dayList.datas[45];
-                item.ttm = dayList.datas[39];
-                let list = dayList.list;
-                if (list) {
-                  item.price = list[list.length - 1][2];
-                  item.dayKDJ = this.computeIsKDJ(dayList.kdj);
-                  let mothList = await this.getMonthData(code);
-                  item.monthKDJ = this.computeIsKDJ(mothList.kdj);
-                  this.list.push(item);
-                }
-              }
-            }
+          let dayObj = await this.getDayData(code);
+          if(dayObj && dayObj.qfqday && this.isMaxAmount(dayObj.qfqday)){
+            let listItem = {
+              typeName: typeName,
+              code: code,
+              dayKDJ: 0,
+              qfqday: dayObj.qfqday,
+              price: dayObj.list[dayObj.list.length - 1],
+              name: "",
+            };
+            this.list.push(listItem);
           }
+          
+          // if (weekList) {
+          //   let amountValue = this.computeIsKDJ(weekList.kdj);
+          //   if (amountValue.value) {
+          //     let item = {
+          //       typeName: typeName,
+          //       code: code,
+          //       //weekKDJ: kdjValue,
+          //       weekKDJ2: this.computeIs2KDJ(weekList.kdj),
+          //       weekRsi: this.computeIsMinRSI(weekList.rsi),
+          //       dayKDJ: 0,
+          //       monthKDJ: 0,
+          //       price: 0,
+          //       name: "",
+          //     };
+          //     let dayList = await this.getDayData(code);
+          //     if (dayList) {
+          //       item.name = dayList.datas[1];
+          //       item.market = dayList.datas[45];
+          //       item.ttm = dayList.datas[39];
+          //       let list = dayList.list;
+          //       if (list) {
+          //         item.price = list[list.length - 1][2];
+          //         item.dayKDJ = this.computeIsKDJ(dayList.kdj);
+          //         let mothList = await this.getMonthData(code);
+          //         item.monthKDJ = this.computeIsKDJ(mothList.kdj);
+          //         this.list.push(item);
+          //       }
+          //     }
+          //   }
+          // }
         }
       }
     },
@@ -379,8 +300,9 @@ export default {
               resole(null);
             } else {
               resole({
-                kdj: indicator.kdj(list),
-                rsi: indicator.rsi(list2),
+                // kdj: indicator.kdj(list),
+                // rsi: indicator.rsi(list2),
+                qfqday: qfqday,
                 list: list,
                 datas: res.data[code].qt[code],
               });

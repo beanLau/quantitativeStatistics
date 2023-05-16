@@ -17,18 +17,12 @@
           <i
             class="el-icon-success"
             type="primary"
-            style="color: rgb(223 236 249)"
-            v-if="scope.row.dayKDJ.value == 1"
-          ></i>
-          <i
-            class="el-icon-success"
-            type="primary"
             style="color: #409eff"
-            v-if="scope.row.dayKDJ.value == 2"
+            v-if="scope.row.dayKDJ"
           ></i>
         </template>
       </el-table-column>
-      <!-- <el-table-column
+      <el-table-column
         prop="weekKDJ"
         width="270px"
         label="周kdj"
@@ -56,7 +50,7 @@
             ></polyline>
           </svg>
         </template>
-      </el-table-column> -->
+      </el-table-column>
       <el-table-column prop="weekKDJ" label="周金叉">
         <template slot-scope="scope">
           <i
@@ -99,7 +93,7 @@
           ></i>
         </template>
       </el-table-column> -->
-      <!-- <el-table-column
+      <el-table-column
         prop="weekKDJ"
         width="270px"
         label="月kdj"
@@ -127,7 +121,7 @@
             ></polyline>
           </svg>
         </template>
-      </el-table-column> -->
+      </el-table-column>
       <el-table-column prop="monthKDJ" label="月KDJ金叉">
         <template slot-scope="scope">
           <i
@@ -223,19 +217,19 @@ export default {
           let arr = item.id.split(".");
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
-          let weekList = await this.getWeekData(code);
+          let DayList = await this.getDayData(code);
 
-          if (weekList) {
-            let kdjValue = this.computeIsKDJ(weekList.kdj);
+          if (DayList) {
+            let kdjValue = this.computeIsKDJ(DayList.kdj);
             if (kdjValue.value) {
               let item = {
                 typeName: typeName,
                 code: code,
-                weekKDJ: kdjValue,
-                weekKDJ2: this.computeIs2KDJ(weekList.kdj),
-                weekRsi: this.computeIsMinRSI(weekList.rsi),
+                monthKDJ: kdjValue,
+                monthKDJ2: this.computeIs2KDJ(monthList.kdj),
+                monthRsi: this.computeIsMinRSI(monthList.rsi),
                 dayKDJ: 0,
-                monthKDJ: 0,
+                weekKDJ: {},
                 price: 0,
                 name: "",
               };
@@ -248,8 +242,8 @@ export default {
                 if (list) {
                   item.price = list[list.length - 1][2];
                   item.dayKDJ = this.computeIsKDJ(dayList.kdj);
-                  let mothList = await this.getMonthData(code);
-                  item.monthKDJ = this.computeIsKDJ(mothList.kdj);
+                  let weekList = await this.getWeekData(code);
+                  item.weekKDJ = this.computeIsKDJ(weekList.kdj);
                   this.list.push(item);
                 }
               }

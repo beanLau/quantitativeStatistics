@@ -1,12 +1,17 @@
 <template>
   <div>
-    <el-button type="primary" @click="clickCb">主要按钮</el-button>
-    <el-table :data="list" max-height="500" border style="width: 100%">
+    <!-- <el-button type="primary" @click="clickCb">主要按钮</el-button> -->
+    <el-table :data="list" max-height="100%" border style="width: 100%">
       <el-table-column prop="typeName" label="类型"> </el-table-column>
-      <el-table-column prop="code" label="编号"> </el-table-column>
-      <el-table-column prop="name" label="名称"> </el-table-column>
-      <el-table-column prop="market" label="市值"> </el-table-column>
-      <el-table-column prop="ttm" label="市盈率"> </el-table-column>
+      <el-table-column prop="code" label="编号">
+        <template slot-scope="scope">
+          <div style="font-size: 12px">
+            <div>编号: {{ scope.row.code }}</div>
+            <div>名称: {{ scope.row.name }}</div>
+            <div>{{ scope.row.market }}（亿） {{ scope.row.ttm }}</div>
+          </div>
+        </template>
+      </el-table-column>
       <el-table-column prop="dayKDJ" label="日金叉">
         <template slot-scope="scope">
           <i
@@ -17,23 +22,52 @@
           ></i>
         </template>
       </el-table-column>
+      <el-table-column
+        prop="weekKDJ"
+        width="270px"
+        label="周kdj"
+        style="padding: 0"
+      >
+        <template slot-scope="scope">
+          <svg width="270px" height="65px">
+            <polyline
+              width="250px"
+              height="65px"
+              :points="getKdjPoints(scope.row.weekKDJ.list.k)"
+              style="fill: none; stroke: #666; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="250px"
+              height="65px"
+              :points="getKdjPoints(scope.row.weekKDJ.list.d)"
+              style="fill: none; stroke: #f4c063; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="250px"
+              height="65px"
+              :points="getKdjPoints(scope.row.weekKDJ.list.j)"
+              style="fill: none; stroke: #b663f4; stroke-width: 1px"
+            ></polyline>
+          </svg>
+        </template>
+      </el-table-column>
       <el-table-column prop="weekKDJ" label="周金叉">
         <template slot-scope="scope">
           <i
             class="el-icon-success"
             type="primary"
             style="color: rgb(223 236 249)"
-            v-if="scope.row.weekKDJ == 1"
+            v-if="scope.row.weekKDJ.value == 1"
           ></i>
           <i
             class="el-icon-success"
             type="primary"
             style="color: #409eff"
-            v-if="scope.row.weekKDJ == 2"
+            v-if="scope.row.weekKDJ.value == 2"
           ></i>
         </template>
       </el-table-column>
-      <el-table-column prop="weekKDJ2" label="周二次金叉">
+      <!-- <el-table-column prop="weekKDJ2" label="周二次金叉">
         <template slot-scope="scope">
           <i
             class="el-icon-success"
@@ -48,8 +82,8 @@
             v-if="scope.row.weekKDJ2 == 2"
           ></i>
         </template>
-      </el-table-column>
-      <el-table-column prop="weekRsi" label="周RSI最小值">
+      </el-table-column> -->
+      <!-- <el-table-column prop="weekRsi" label="周RSI最小值">
         <template slot-scope="scope">
           <i
             class="el-icon-success"
@@ -58,46 +92,49 @@
             v-if="scope.row.weekRsi"
           ></i>
         </template>
-      </el-table-column>
-      <el-table-column prop="monthRsi" label="月RSI最小值">
+      </el-table-column> -->
+      <el-table-column
+        prop="weekKDJ"
+        width="270px"
+        label="月kdj"
+        style="padding: 0"
+      >
         <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.monthRsi"
-          ></i>
+          <svg width="270px" height="65px">
+            <polyline
+              width="250px"
+              height="65px"
+              :points="getKdjPoints(scope.row.monthKDJ.list.k)"
+              style="fill: none; stroke: #666; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="250px"
+              height="65px"
+              :points="getKdjPoints(scope.row.monthKDJ.list.d)"
+              style="fill: none; stroke: #f4c063; stroke-width: 1px"
+            ></polyline>
+            <polyline
+              width="250px"
+              height="65px"
+              :points="getKdjPoints(scope.row.monthKDJ.list.j)"
+              style="fill: none; stroke: #b663f4; stroke-width: 1px"
+            ></polyline>
+          </svg>
         </template>
       </el-table-column>
-      <el-table-column prop="monthKDJ" label="月kdj金叉">
+      <el-table-column prop="monthKDJ" label="月KDJ金叉">
         <template slot-scope="scope">
           <i
             class="el-icon-success"
             type="primary"
             style="color: rgb(223 236 249)"
-            v-if="scope.row.monthKDJ == 1"
+            v-if="scope.row.monthKDJ.value == 1"
           ></i>
           <i
             class="el-icon-success"
             type="primary"
             style="color: #409eff"
-            v-if="scope.row.monthKDJ == 2"
-          ></i>
-        </template>
-      </el-table-column>
-      <el-table-column prop="monthKDJ2" label="月kdj2次金叉">
-        <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: rgb(223 236 249)"
-            v-if="scope.row.monthKDJ2 == 1"
-          ></i>
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.monthKDJ2 == 2"
+            v-if="scope.row.monthKDJ.value == 2"
           ></i>
         </template>
       </el-table-column>
@@ -127,6 +164,39 @@ export default {
     this.init();
   },
   methods: {
+    getKdjPoints(list) {
+      list = [...list];
+      // let cha = list.length - 52;
+      // if (cha > 0) {
+      //   list = list.splice(cha);
+      // }
+      let str = "";
+      let arr = list.map((item) => {
+        return 50 - item / 2;
+      });
+      let min = Math.min(...arr);
+      if (min < 0) {
+        arr = arr.map((item) => {
+          item += -min;
+          item += 2;
+          return item;
+        });
+      }
+      arr.map((item, index) => {
+        str += ` ${index * 5},${item.toFixed(2)} `;
+      });
+      return str;
+    },
+    getHref(item) {
+      return `https://api.mairui.club/hsmy/zjlr/${item.code
+        .replace("sh", "")
+        .replace("sz", "")}/75711c5d92566892c4`;
+    },
+    getHref2(item) {
+      return `https://api.mairui.club/hsmy/jddxt/${item.code
+        .replace("sh", "")
+        .replace("sz", "")}/75711c5d92566892c4`;
+    },
     async init() {
       this.getData();
     },
@@ -148,20 +218,18 @@ export default {
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
           let monthList = await this.getMonthData(code);
+
           if (monthList) {
             let kdjValue = this.computeIsKDJ(monthList.kdj);
-            if (kdjValue) {
+            if (kdjValue.value) {
               let item = {
                 typeName: typeName,
                 code: code,
-                weekKDJ: false,
-                weekKDJ2: false,
-                weekRsi: false,
-                monthRsi: true,
-                dayKDJ: false,
                 monthKDJ: kdjValue,
                 monthKDJ2: this.computeIs2KDJ(monthList.kdj),
                 monthRsi: this.computeIsMinRSI(monthList.rsi),
+                dayKDJ: 0,
+                weekKDJ: {},
                 price: 0,
                 name: "",
               };
@@ -174,21 +242,8 @@ export default {
                 if (list) {
                   item.price = list[list.length - 1][2];
                   item.dayKDJ = this.computeIsKDJ(dayList.kdj);
-
                   let weekList = await this.getWeekData(code);
-                  if (weekList && this.computeIsMinRSI(weekList.rsi)) {
-                    item.weekRsi = true;
-                  } else if (weekList) {
-                    item.weekRsi = false;
-                  }
-
-                  if (weekList) {
-                    item.weekKDJ = this.computeIsKDJ(weekList.kdj);
-                  }
-
-                  if (weekList) {
-                    item.weekKDJ2 = this.computeIs2KDJ(weekList.kdj);
-                  }
+                  item.weekKDJ = this.computeIsKDJ(weekList.kdj);
                   this.list.push(item);
                 }
               }
@@ -217,7 +272,7 @@ export default {
       let j = list.j;
       let length = k.length;
       if (j[length - 1] > 30) {
-        return 0;
+        return false;
       }
       let allList = k.map((k, index) => {
         return [k, d[index], j[index]];
@@ -226,19 +281,14 @@ export default {
         allList.filter((item) => {
           return item[2] > item[0];
         }).length == 1;
-      if(hasOneKDJ){
-        return 2
-      }
       let willKDJ =
         Math.abs(j[length - 1] - k[length - 1]) <= 5 &&
         j[length - 1] < k[length - 1] &&
         Math.abs(j[length - 2] - k[length - 2]) >
           Math.abs(j[length - 1] - k[length - 1]) &&
         j[length - 2] < k[length - 2];
-      if(willKDJ){
-        return 1
-      }
-      return 0
+
+      return willKDJ && hasOneKDJ;
     },
 
     computeIsMinRSI(list) {
@@ -269,11 +319,12 @@ export default {
       let d = list.d;
       let j = list.j;
       let length = k.length;
+      let value = 0;
       if (j[length - 1] > 30) {
-        return 0;
+        value = 0;
       }
       if (j[length - 1] > k[length - 1] && j[length - 2] <= k[length - 2]) {
-        return 2;
+        value = 2;
       } else if (
         //根据绝对值判断将要形成金叉
         Math.abs(j[length - 1] - k[length - 1]) <= 5 &&
@@ -282,9 +333,17 @@ export default {
           Math.abs(j[length - 1] - k[length - 1]) &&
         j[length - 2] < k[length - 2]
       ) {
-        return 1;
+        value = 1;
       }
-      return 0;
+
+      let minLength = Math.min(list.k.length, list.d.length, list.j.length);
+      list.k = list.k.splice(list.k.length - minLength);
+      list.d = list.d.splice(list.d.length - minLength);
+      list.j = list.j.splice(list.j.length - minLength);
+      return {
+        value: value,
+        list: list,
+      };
     },
     getDayData(code) {
       return new Promise((resole) => {
@@ -379,7 +438,7 @@ export default {
       return new Promise((resole) => {
         let endTime = moment().format("YYYY-MM-DD");
         let beginTime = moment(
-          Date.now() - 1000 * 60 * 60 * 24 * 30 * 30
+          Date.now() - 1000 * 60 * 60 * 24 * 30 * 12 * 5
         ).format("YYYY-MM-DD");
         request
           .get(
@@ -422,5 +481,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.el-table .el-table__cell {
+  padding: 0;
+  margin: 0;
+}
+.cell {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+svg {
+  position: relative;
+  overflow: hidden;
+}
+polyline {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>

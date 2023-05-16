@@ -224,14 +224,15 @@ export default {
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
           let weekList = await this.getWeekData(code);
-
+          debugger
+          console.log(weekList)
           if (weekList) {
-            let kdjValue = this.computeIsKDJ(weekList.kdj);
-            if (kdjValue.value) {
+            let amountValue = this.computeIsKDJ(weekList.kdj);
+            if (amountValue.value) {
               let item = {
                 typeName: typeName,
                 code: code,
-                weekKDJ: kdjValue,
+                //weekKDJ: kdjValue,
                 weekKDJ2: this.computeIs2KDJ(weekList.kdj),
                 weekRsi: this.computeIsMinRSI(weekList.rsi),
                 dayKDJ: 0,

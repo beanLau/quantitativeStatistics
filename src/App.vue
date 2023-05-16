@@ -6,6 +6,9 @@
       <router-link to="/weekrsi">weekrsi</router-link>
       <router-link to="/monthrsi">monthrsi</router-link>
       <router-link to="/monthkdj">monthkdj</router-link>
+      <router-link to="/daykdj">daykdj</router-link>
+      <router-link to="/weekamount">weekamount</router-link>
+      <router-link to="/dayamount">dayamount</router-link>
     </div>
     <router-view/>
   </div>
