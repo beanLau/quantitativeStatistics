@@ -9,7 +9,7 @@
             <div>编号: {{scope.row.code}}</div>
             <div :style="{color: scope.row.state ? 'red': ''}">名称: {{scope.row.name}} {{scope.row.state}}</div>
             <div>描述: {{scope.row.desc}}</div>
-            <div>{{scope.row.market}}（亿）    {{scope.row.ttm}}</div>
+            <div>{{scope.row.market}}  {{scope.row.ttm}}</div>
           </div>
         </template>
       </el-table-column>
@@ -132,9 +132,6 @@
       </el-table-column> -->
       <el-table-column prop="price" label="股价"> </el-table-column>
     </el-table>
-    <div>
-      <span style="margin-right:4px;" v-for="item in list" :key="item.code">{{item.code}}</span>
-    </div>
   </div>
 </template>
 
@@ -202,10 +199,11 @@ export default {
           let arr = data.id.split(".");
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
-          let weekList = await this.getWeekData(code);
-          if (weekList) {
-            let rsidata = this.computeIsMinRSI(weekList.rsi);
-            if (rsidata.value) {
+          let monthList = await this.getMonthData(code);
+          if (monthList) {
+            let booldata = this.computeIsMinBoll(monthList.list, monthList.boll);
+            if (booldata) {
+              let rsidata = this.computeIsMinRSI(monthList.rsi);
               let item = {
                 state: data.state ? '央国企':'',
                 desc: data.desc || '',
@@ -213,10 +211,11 @@ export default {
                 code: code,
                 weekKDJ: false,
                 weekKDJ2: false,
-                weekRsi: rsidata,
-                monthRsi: 0,
+                monthBoll: true,
+                weekRsi: {},
+                monthRsi: rsidata,
                 dayKDJ: false,
-                monthKDJ: this.computeIsKDJ(weekList.kdj),
+                monthKDJ: this.computeIsKDJ(monthList.kdj),
                 price: 0,
                 name: "",
               };
@@ -233,20 +232,20 @@ export default {
                   } else if (dayList) {
                     item.dayKDJ = false;
                   }
-                  let monthList = await this.getMonthData(code);
-                  let monthrsi = this.computeIsMinRSI(monthList.rsi);
-                  item.monthRsi = monthrsi;
-                  if (monthList && this.computeIsKDJ(monthList.kdj)) {
-                    item.monthKDJ = true;
-                  } else if (monthList) {
-                    item.monthKDJ = false;
+                  let weekList = await this.getWeekData(code);
+                  let weekrsi = this.computeIsMinRSI(weekList.rsi);
+                  item.weekRsi = weekrsi;
+                  if (weekList && this.computeIsKDJ(weekList.kdj)) {
+                    item.weekKDJ = true;
+                  } else if (weekList) {
+                    item.weekKDJ = false;
                   }
 
-                  if (monthList && this.computeIs2KDJ(monthList.kdj)) {
-                    item.monthKDJ2 = true;
-                  } else if (monthList) {
-                    item.monthKDJ2 = false;
-                  }
+                  // if (monthList && this.computeIs2KDJ(monthList.kdj)) {
+                  //   item.monthKDJ2 = true;
+                  // } else if (monthList) {
+                  //   item.monthKDJ2 = false;
+                  // }
                   this.list.push(item);
                 }
               }
@@ -293,7 +292,16 @@ export default {
 
       return willKDJ && hasOneKDJ;
     },
-
+    computeIsMinBoll(list, boll){
+      let lastPrices = list[list.length - 1]
+      let lastPrice = Math.min(...lastPrices)
+      let lowers = boll.lower
+      let val = lowers[lowers.length - 1]
+      if(lastPrice < val){
+        return true
+      }
+      return false
+    },
     computeIsMinRSI(list) {
       let rsi6 = list.rsi6;
       let length = rsi6.length;
@@ -483,6 +491,7 @@ export default {
               resole({
                 kdj: indicator.kdj(list),
                 rsi: indicator.rsi(list2),
+                boll: indicator.boll(list2),
                 list: list,
               });
             }

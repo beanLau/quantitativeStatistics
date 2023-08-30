@@ -27,12 +27,28 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Weekrsi.vue')
   },
   {
+    path: '/weekboll',
+    name: 'weekboll',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Weekboll.vue')
+  },
+  {
     path: '/monthrsi',
     name: 'monthrsi',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Monthrsi.vue')
+  },
+  {
+    path: '/monthboll',
+    name: 'monthboll',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Monthboll.vue')
   },
   {
     path: '/monthkdj',

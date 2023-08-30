@@ -7,7 +7,8 @@
         <template slot-scope="scope">
           <div style="font-size:12px;">
             <div>编号: {{scope.row.code}}</div>
-            <div>名称: {{scope.row.name}}</div>
+            <div :style="{color: scope.row.state ? 'red': ''}">名称: {{scope.row.name}} {{scope.row.state}}</div>
+            <div>描述: {{scope.row.desc}}</div>
             <div>{{scope.row.market}}  {{scope.row.ttm}}</div>
           </div>
         </template>
@@ -188,14 +189,14 @@ export default {
       list = list || allCode || [];
       for (let i = 0; i < list.length; i++) {
         await this.waitStop();
-        let item = list[i];
-        if (item.children) {
+        let data = list[i];
+        if (data.children) {
           await this.getData(
-            item.children,
-            (typeName ? typeName + "-" : "") + item.name
+            data.children,
+            (typeName ? typeName + "-" : "") + data.name
           );
         } else {
-          let arr = item.id.split(".");
+          let arr = data.id.split(".");
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
           let monthList = await this.getMonthData(code);
@@ -203,6 +204,8 @@ export default {
             let rsidata = this.computeIsMinRSI(monthList.rsi);
             if (rsidata.value) {
               let item = {
+                state: data.state ? '央国企':'',
+                desc: data.desc || '',
                 typeName: typeName,
                 code: code,
                 weekKDJ: false,

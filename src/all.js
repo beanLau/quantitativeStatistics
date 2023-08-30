@@ -56,6 +56,8 @@ export default [
                     {
                         "name": "农发种业",
                         "scale": 10611923884,
+                        "state": true,
+                        "desc": "中国农业发展集团有限公司",
                         "id": "600313.SH"
                     },
                     {
@@ -113,6 +115,8 @@ export default [
                     {
                         "name": "中水渔业",
                         "scale": 3.36666045E+9,
+                        "state": true,
+                        "desc": "中国农业发展集团有限公司",
                         "id": "000798.SZ"
                     },
                     {
@@ -344,6 +348,8 @@ export default [
                     {
                         "name": "中粮糖业",
                         "scale": 15699145994,
+                        "state": true,
+                        "desc": "中粮集团有限公司",
                         "id": "600737.SH"
                     },
                     {
@@ -354,6 +360,8 @@ export default [
                     {
                         "name": "国投中鲁",
                         "scale": 3.0177576E+9,
+                        "state": true,
+                        "desc": "国家开发投资公司集团有限公司",
                         "id": "600962.SH"
                     },
                     {
@@ -505,6 +513,8 @@ export default [
                     {
                         "name": "中牧股份",
                         "scale": 13223869967,
+                        "state": true,
+                        "desc": "中国农业发展集团有限公司",
                         "id": "600195.SH"
                     },
                     {
@@ -564,6 +574,8 @@ export default [
                     {
                         "name": "中国石油",
                         "scale": 848471687766,
+                        "state": true,
+                        "desc": "中国石油天然气集团有限公司",
                         "id": "601857.SH"
                     }
                 ],
@@ -656,6 +668,8 @@ export default [
                     {
                         "name": "上海能源",
                         "scale": 1.253193012E+10,
+                        "state": true,
+                        "desc": "中国中煤能源集团有限公司",
                         "id": "600508.SH"
                     },
                     {
@@ -716,6 +730,8 @@ export default [
                     {
                         "name": "中国神华",
                         "scale": 477250638418,
+                        "state": true,
+                        "desc": "国家能源投资集团有限责任公司",
                         "id": "601088.SH"
                     },
                     {
@@ -741,11 +757,15 @@ export default [
                     {
                         "name": "中煤能源",
                         "scale": 84839043708,
+                        "state": true,
+                        "desc": "中国中煤能源集团有限公司",
                         "id": "601898.SH"
                     },
                     {
                         "name": "新集能源",
                         "scale": 12615938566,
+                        "state": true,
+                        "desc": "中国中煤能源集团有限公司",
                         "id": "601918.SH"
                     },
                     {
@@ -768,6 +788,8 @@ export default [
                     {
                         "name": "攀钢钒钛",
                         "scale": 50849433426,
+                        "state": true,
+                        "desc": "鞍钢集团有限公司",
                         "id": "000629.SZ"
                     },
                     {
@@ -875,11 +897,15 @@ export default [
                     {
                         "name": "海油工程",
                         "scale": 19056039188,
+                        "state": true,
+                        "desc": "中国海洋石油集团有限公司",
                         "id": "600583.SH"
                     },
                     {
                         "name": "石化油服",
                         "scale": 26053206818,
+                        "state": true,
+                        "desc": "中国石油化工集团有限公司",
                         "id": "600871.SH"
                     },
                     {
@@ -890,6 +916,8 @@ export default [
                     {
                         "name": "中海油服",
                         "scale": 4.076564436E+10,
+                        "state": true,
+                        "desc": "中国海洋石油集团有限公司",
                         "id": "601808.SH"
                     },
                     {
@@ -924,6 +952,8 @@ export default [
                     {
                         "name": "华锦股份",
                         "scale": 10588309595,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "000059.SZ"
                     },
                     {
@@ -949,6 +979,8 @@ export default [
                     {
                         "name": "沈阳化工",
                         "scale": 3480609132,
+                        "state": true,
+                        "desc": "中国化工集团有限公司",
                         "id": "000698.SZ"
                     },
                     {
@@ -984,6 +1016,8 @@ export default [
                     {
                         "name": "中国石化",
                         "scale": 396564749841,
+                        "state": true,
+                        "desc": "中国石油化工集团有限公司",
                         "id": "600028.SH"
                     },
                     {
@@ -999,6 +1033,8 @@ export default [
                     {
                         "name": "上海石化",
                         "scale": 2.271932185E+10,
+                        "state": true,
+                        "desc": "中国石油化工集团有限公司",
                         "id": "600688.SH"
                     },
                     {
@@ -1041,6 +1077,8 @@ export default [
                     {
                         "name": "英 力 特",
                         "scale": 3082400912,
+                        "state": true,
+                        "desc": "国家能源投资集团有限责任公司",
                         "id": "000635.SZ"
                     },
                     {
@@ -1061,6 +1099,8 @@ export default [
                     {
                         "name": "山东海化",
                         "scale": 8216943881,
+                        "state": true,
+                        "desc": "中国海洋石油集团有限公司",
                         "id": "000822.SZ"
                     },
                     {
@@ -1166,6 +1206,8 @@ export default [
                     {
                         "name": "红星发展",
                         "scale": 7240011654,
+                        "monopoly": true,
+                        "desc": '世界钡王、亚洲锶王，唯一的市场竞争者',
                         "id": "600367.SH"
                     },
                     {
@@ -1268,11 +1310,15 @@ export default [
                     {
                         "name": "ST红太阳",
                         "scale": 9140530913,
+                        "monopoly": true,
+                        "desc": '号称印钞机的吡啶生产工艺全国唯一',
                         "id": "000525.SZ"
                     },
                     {
                         "name": "安道麦A",
                         "scale": 24100136793,
+                        "state": true,
+                        "desc": "中国化工集团有限公司",
                         "id": "000553.SZ"
                     },
                     {
@@ -1283,6 +1329,8 @@ export default [
                     {
                         "name": "四川美丰",
                         "scale": 5851380282,
+                        "state": true,
+                        "desc": "中国石油化工集团有限公司",
                         "id": "000731.SZ"
                     },
                     {
@@ -1303,6 +1351,8 @@ export default [
                     {
                         "name": "中广核技",
                         "scale": 6634754454,
+                        "state": true,
+                        "desc": "中国广核集团有限公司",
                         "id": "000881.SZ"
                     },
                     {
@@ -1328,6 +1378,8 @@ export default [
                     {
                         "name": "大庆华科",
                         "scale": 2.10534548E+9,
+                        "state": true,
+                        "desc": "中国石油天然气集团有限公司",
                         "id": "000985.SZ"
                     },
                     {
@@ -1363,6 +1415,8 @@ export default [
                     {
                         "name": "中材科技",
                         "scale": 4.465486857E+10,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "002080.SZ"
                     },
                     {
@@ -1423,6 +1477,8 @@ export default [
                     {
                         "name": "北化股份",
                         "scale": 4974255234,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "002246.SZ"
                     },
                     {
@@ -1433,6 +1489,8 @@ export default [
                     {
                         "name": "利尔化学",
                         "scale": 17659945911,
+                        "monopoly": true,
+                        "desc": '技术全国第一一，国内唯一家掌握" 氯代毗啶“类除草剂生产技术的企业',
                         "id": "002258.SZ"
                     },
                     {
@@ -1578,6 +1636,8 @@ export default [
                     {
                         "name": "万润股份",
                         "scale": 17843428843,
+                        "state": true,
+                        "desc": "中国节能环保集团有限公司",
                         "id": "002643.SZ"
                     },
                     {
@@ -1603,6 +1663,8 @@ export default [
                     {
                         "name": "天赐材料",
                         "scale": 107043648203,
+                        "monopoly": true,
+                        "desc": '电解液全球第一',
                         "id": "002709.SZ"
                     },
                     {
@@ -1648,6 +1710,8 @@ export default [
                     {
                         "name": "恩捷股份",
                         "scale": 158009533371,
+                        "monopoly": true,
+                        "desc": '湿法隔膜全球第一',
                         "id": "002812.SZ"
                     },
                     {
@@ -1748,6 +1812,8 @@ export default [
                     {
                         "name": "当升科技",
                         "scale": 45614266241,
+                        "state": true,
+                        "desc": '北京矿冶科技集团有限公司',
                         "id": "300073.SZ"
                     },
                     {
@@ -1848,6 +1914,8 @@ export default [
                     {
                         "name": "乐凯新材",
                         "scale": 2455886079,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "300446.SZ"
                     },
                     {
@@ -2098,6 +2166,9 @@ export default [
                     {
                         "name": "中国巨石",
                         "scale": 60207176389,
+                        "monopoly": true,
+                        "state": true,
+                        "desc": "玻纤全球第一、中国建材集团有限公司",
                         "id": "600176.SH"
                     },
                     {
@@ -2108,6 +2179,8 @@ export default [
                     {
                         "name": "沧州大化",
                         "scale": 6935781374,
+                        "state": true,
+                        "desc": "中国化工集团有限公司",
                         "id": "600230.SH"
                     },
                     {
@@ -2123,11 +2196,15 @@ export default [
                     {
                         "name": "安迪苏",
                         "scale": 25531700119,
+                        "state": true,
+                        "desc": "中国化工集团有限公司",
                         "id": "600299.SH"
                     },
                     {
                         "name": "万华化学",
                         "scale": 275889536027,
+                        "monopoly": true,
+                        "desc": 'MDI全球第一',
                         "id": "600309.SH"
                     },
                     {
@@ -2138,6 +2215,8 @@ export default [
                     {
                         "name": "浙江龙盛",
                         "scale": 32240518733,
+                        "monopoly": true,
+                        "desc": '纺织化学用品生产服务商全球排名第一',
                         "id": "600352.SH"
                     },
                     {
@@ -2148,6 +2227,8 @@ export default [
                     {
                         "name": "江山股份",
                         "scale": 1.716363E+10,
+                        "state": true,
+                        "desc": "中国中化集团有限公司",
                         "id": "600389.SH"
                     },
                     {
@@ -2163,6 +2244,8 @@ export default [
                     {
                         "name": "时代新材",
                         "scale": 8854863617,
+                        "state": true,
+                        "desc": '中国中车集团有限公司',
                         "id": "600458.SH"
                     },
                     {
@@ -2173,6 +2256,8 @@ export default [
                     {
                         "name": "扬农化工",
                         "scale": 36202390316,
+                        "state": true,
+                        "desc": "中国中化集团有限公司",
                         "id": "600486.SH"
                     },
                     {
@@ -2680,6 +2765,8 @@ export default [
                     {
                         "name": "华峰化学",
                         "scale": 15992837333,
+                        "monopoly": true,
+                        "desc": '氨纶全球第一',
                         "id": "002064.SZ"
                     },
                     {
@@ -2695,6 +2782,8 @@ export default [
                     {
                         "name": "泰和新材",
                         "scale": 7552520368,
+                        "monopoly": true,
+                        "desc": '国内唯一能够生产对位芳纶的企业',
                         "id": "002254.SZ"
                     },
                     {
@@ -3089,6 +3178,8 @@ export default [
                     {
                         "name": "风神股份",
                         "scale": 2.96391768E+9,
+                        "state": true,
+                        "desc": "中国化工集团有限公司",
                         "id": "600469.SH"
                     },
                     {
@@ -3158,6 +3249,8 @@ export default [
                     {
                         "name": "韶钢松山",
                         "scale": 8240668706,
+                        "state": true,
+                        "desc": "中国宝武钢铁集团有限公司",
                         "id": "000717.SZ"
                     },
                     {
@@ -3168,6 +3261,8 @@ export default [
                     {
                         "name": "新兴铸管",
                         "scale": 16519844981,
+                        "state": true,
+                        "desc": "新兴际华集团有限公司",
                         "id": "000778.SZ"
                     },
                     {
@@ -3178,6 +3273,8 @@ export default [
                     {
                         "name": "鞍钢股份",
                         "scale": 23823758157,
+                        "state": true,
+                        "desc": "鞍钢集团有限公司",
                         "id": "000898.SZ"
                     },
                     {
@@ -3228,6 +3325,8 @@ export default [
                     {
                         "name": "包钢股份",
                         "scale": 69373093376,
+                        "monopoly": true,
+                        "desc": '稀土储量占到中国的90%',
                         "id": "600010.SH"
                     },
                     {
@@ -3283,6 +3382,8 @@ export default [
                     {
                         "name": "八一钢铁",
                         "scale": 7143304074,
+                        "state": true,
+                        "desc": "中国宝武钢铁集团有限公司",
                         "id": "600581.SH"
                     },
                     {
@@ -3352,11 +3453,15 @@ export default [
                     {
                         "name": "东方钽业",
                         "scale": 4725708963,
+                        "state": true,
+                        "desc": '中国有色矿业集团有限公司',
                         "id": "000962.SZ"
                     },
                     {
                         "name": "安泰科技",
                         "scale": 10339339712,
+                        "monopoly": true,
+                        "desc": '非晶带材国内航母，在之前全球仅有日立金属能够生产、中国钢研科技集团有限爱你公司',
                         "id": "000969.SZ"
                     },
                     {
@@ -3387,6 +3492,8 @@ export default [
                     {
                         "name": "中钢天源",
                         "scale": 9043795845,
+                        "state": true,
+                        "desc": "中国中钢集团有限公司",
                         "id": "002057.SZ"
                     },
                     {
@@ -3402,6 +3509,8 @@ export default [
                     {
                         "name": "格林美",
                         "scale": 46301782951,
+                        "monopoly": true,
+                        "desc": '国内唯一一家可以采用钴镍废料生产并销售超细钴粉，超细镍粉的企业，在该技术领域具有一定的独占性、三元前驱体全球第一',
                         "id": "002340.SZ"
                     },
                     {
@@ -3472,6 +3581,8 @@ export default [
                     {
                         "name": "有研新材",
                         "scale": 15034787176,
+                        "state": true,
+                        "desc": '有研科技集团有限公司',
                         "id": "600206.SH"
                     },
                     {
@@ -3497,6 +3608,8 @@ export default [
                     {
                         "name": "北矿科技",
                         "scale": 2595178454,
+                        "state": true,
+                        "desc": '北京矿冶科技集团有限公司',
                         "id": "600980.SH"
                     },
                     {
@@ -3507,6 +3620,8 @@ export default [
                     {
                         "name": "合盛硅业",
                         "scale": 1.281308E+11,
+                        "monopoly": true,
+                        "desc": '工业硅全球第一',
                         "id": "603260.SH"
                     },
                     {
@@ -3614,6 +3729,8 @@ export default [
                     {
                         "name": "中色股份",
                         "scale": 9649712561,
+                        "state": true,
+                        "desc": "中国有色矿业集团有限公司",
                         "id": "000758.SZ"
                     },
                     {
@@ -3784,6 +3901,8 @@ export default [
                     {
                         "name": "株冶集团",
                         "scale": 4573060114,
+                        "state": true,
+                        "desc": "中国五矿集团有限公司",
                         "id": "600961.SH"
                     },
                     {
@@ -3814,6 +3933,8 @@ export default [
                     {
                         "name": "中国铝业",
                         "scale": 60946774541,
+                        "state": true,
+                        "desc": "中国铝业公司",
                         "id": "601600.SH"
                     },
                     {
@@ -3928,16 +4049,22 @@ export default [
                     {
                         "name": "中钨高新",
                         "scale": 15636958095,
+                        "state": true,
+                        "desc": "中国五矿集团有限公司",
                         "id": "000657.SZ"
                     },
                     {
                         "name": "五矿稀土",
                         "scale": 2.838692711E+10,
+                        "state": true,
+                        "desc": "中国五矿集团有限公司",
                         "id": "000831.SZ"
                     },
                     {
                         "name": "锡业股份",
                         "scale": 26116350331,
+                        "monopoly": true,
+                        "desc": '具有国际定价权。公司锡金属产量位居全球第一',
                         "id": "000960.SZ"
                     },
                     {
@@ -3958,6 +4085,8 @@ export default [
                     {
                         "name": "云南锗业",
                         "scale": 7902143468,
+                        "state": true,
+                        "desc": "中国铝业公司",
                         "id": "002428.SZ"
                     },
                     {
@@ -4013,6 +4142,8 @@ export default [
                     {
                         "name": "宝钛股份",
                         "scale": 26292097971,
+                        "monopoly": true,
+                        "desc": '国内钛行业垄断地位，为波音提供钛材',
                         "id": "600456.SH"
                     },
                     {
@@ -4237,11 +4368,15 @@ export default [
                     {
                         "name": "上海贝岭",
                         "scale": 16275606011,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "600171.SH"
                     },
                     {
                         "name": "大唐电信",
                         "scale": 6171987692,
+                        "state": true,
+                        "desc": "中国信息通信科技集团有限公司",
                         "id": "600198.SH"
                     },
                     {
@@ -4307,6 +4442,8 @@ export default [
                     {
                         "name": "新洁能",
                         "scale": 17644925088,
+                        "monopoly": true,
+                        "desc": '主营MOSFET、IGBT等半导体芯片和功率器件的研发设计及销售，属于国内稀缺唯一标的',
                         "id": "605111.SH"
                     },
                     {
@@ -4462,6 +4599,8 @@ export default [
                     {
                         "name": "华润微",
                         "scale": 25032976326,
+                        "state": true,
+                        "desc": "华润(集团)有限公司",
                         "id": "688396.SH"
                     },
                     {
@@ -4537,6 +4676,8 @@ export default [
                     {
                         "name": "中芯国际",
                         "scale": 8.279175473E+10,
+                        "monopoly": true,
+                        "desc": '芯片制造环节国内唯一标的',
                         "id": "688981.SH"
                     }
                 ],
@@ -4564,6 +4705,8 @@ export default [
                     {
                         "name": "振华科技",
                         "scale": 64664290601,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "000733.SZ"
                     },
                     {
@@ -4644,6 +4787,8 @@ export default [
                     {
                         "name": "鹏鼎控股",
                         "scale": 73450012979,
+                        "monopoly": true,
+                        "desc": 'PCB全球第一',
                         "id": "002938.SZ"
                     },
                     {
@@ -4826,11 +4971,15 @@ export default [
                     {
                         "name": "京东方Ａ",
                         "scale": 144055225055,
+                        "monopoly": true,
+                        "desc": 'LED液晶屏全球排名第一',
                         "id": "000725.SZ"
                     },
                     {
                         "name": "冠捷科技",
                         "scale": 7966787614,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "000727.SZ"
                     },
                     {
@@ -4856,6 +5005,8 @@ export default [
                     {
                         "name": "中光学",
                         "scale": 4139342191,
+                        "state": true,
+                        "desc": "中国兵器装备集团有限公司",
                         "id": "002189.SZ"
                     },
                     {
@@ -5156,6 +5307,8 @@ export default [
                     {
                         "name": "彩虹股份",
                         "scale": 11359837309,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "600707.SH"
                     },
                     {
@@ -5278,6 +5431,8 @@ export default [
                     {
                         "name": "远 望 谷",
                         "scale": 5072819209,
+                        "monopoly": true,
+                        "desc": '国内唯一一掌握超高频RF ID (射频识别)技术的企业',
                         "id": "002161.SZ"
                     },
                     {
@@ -5388,6 +5543,8 @@ export default [
                     {
                         "name": "凤凰光学",
                         "scale": 6219967208,
+                        "state": true,
+                        "desc": "中国电子科技集团有限公司",
                         "id": "600071.SH"
                     },
                     {
@@ -5480,6 +5637,9 @@ export default [
                     {
                         "name": "深科技",
                         "scale": 21262982669,
+                        "monopoly": true,
+                        "state": true,
+                        "desc": '内存条制造世界排名第一、中国电子科技集团有限公司',
                         "id": "000021.SZ"
                     },
                     {
@@ -5530,11 +5690,16 @@ export default [
                     {
                         "name": "海康威视",
                         "scale": 306559205462,
+                        "state": true,
+                        "desc": "中国电子科技集团有限公司、视频监控设备全球排名第一",
+                        "monopoly": true,
                         "id": "002415.SZ"
                     },
                     {
                         "name": "立讯精密",
                         "scale": 261479578224,
+                        "monopoly": true,
+                        "desc": 'AirPods全球组装供应商全球排名第一',
                         "id": "002475.SZ"
                     },
                     {
@@ -5670,6 +5835,8 @@ export default [
                     {
                         "name": "欣旺达",
                         "scale": 46898521409,
+                        "monopoly": true,
+                        "desc": '智能手机电池第一',
                         "id": "300207.SZ"
                     },
                     {
@@ -5934,6 +6101,8 @@ export default [
                     {
                         "name": "江铃汽车",
                         "scale": 8544272877,
+                        "state": true,
+                        "desc": "中国兵器装备集团有限公司",
                         "id": "000550.SZ"
                     },
                     {
@@ -5944,6 +6113,8 @@ export default [
                     {
                         "name": "长安汽车",
                         "scale": 129579318862,
+                        "state": true,
+                        "desc": "中国兵器装备集团有限公司",
                         "id": "000625.SZ"
                     },
                     {
@@ -5959,6 +6130,8 @@ export default [
                     {
                         "name": "中国铁物",
                         "scale": 10611177628,
+                        "state": true,
+                        "desc": "中国铁路物资集团有限公司",
                         "id": "000927.SZ"
                     },
                     {
@@ -5984,6 +6157,8 @@ export default [
                     {
                         "name": "东风汽车",
                         "scale": 1.372E+10,
+                        "state": true,
+                        "desc": "东风汽车公司",
                         "id": "600006.SH"
                     },
                     {
@@ -6146,6 +6321,8 @@ export default [
                     {
                         "name": "西仪股份",
                         "scale": 4670180082,
+                        "state": true,
+                        "desc": "中国兵器装备集团有限公司",
                         "id": "002265.SZ"
                     },
                     {
@@ -6506,26 +6683,36 @@ export default [
                     {
                         "name": "东风科技",
                         "scale": 3.7972116E+9,
+                        "state": true,
+                        "desc": "东风汽车公司",
                         "id": "600081.SH"
                     },
                     {
                         "name": "长春一东",
                         "scale": 2102934447,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "600148.SH"
                     },
                     {
                         "name": "东安动力",
                         "scale": 3.5302912E+9,
+                        "state": true,
+                        "desc": "中国兵器装备集团有限公司",
                         "id": "600178.SH"
                     },
                     {
                         "name": "凌云股份",
                         "scale": 7237615181,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "600480.SH"
                     },
                     {
                         "name": "贵航股份",
                         "scale": 10004144791,
+                        "state": true,
+                        "desc": "中国航天科工集团有限公司",
                         "id": "600523.SH"
                     },
                     {
@@ -6541,6 +6728,8 @@ export default [
                     {
                         "name": "福耀玻璃",
                         "scale": 78196586401,
+                        "monopoly": true,
+                        "desc": '汽车玻璃全球第-一',
                         "id": "600660.SH"
                     },
                     {
@@ -6551,6 +6740,8 @@ export default [
                     {
                         "name": "湖南天雁",
                         "scale": 3628870127,
+                        "state": true,
+                        "desc": "中国兵器装备集团有限公司",
                         "id": "600698.SH"
                     },
                     {
@@ -6566,6 +6757,8 @@ export default [
                     {
                         "name": "一汽富维",
                         "scale": 6771572245,
+                        "state": true,
+                        "desc": "中国第一汽车集团有限公司",
                         "id": "600742.SH"
                     },
                     {
@@ -6968,6 +7161,8 @@ export default [
                     {
                         "name": "国机汽车",
                         "scale": 1.023558416E+10,
+                        "state": true,
+                        "desc": "中国机械工业集团有限公司",
                         "id": "600335.SH"
                     },
                     {
@@ -6983,6 +7178,8 @@ export default [
                     {
                         "name": "XD中国汽",
                         "scale": 14573051916,
+                        "state": true,
+                        "desc": "中国通用技术(集团)控股有限责任公司",
                         "id": "601965.SH"
                     },
                     {
@@ -7030,6 +7227,8 @@ export default [
                     {
                         "name": "林海股份",
                         "scale": 1.9457856E+9,
+                        "state": true,
+                        "desc": "中国机械工业集团有限公司",
                         "id": "600099.SH"
                     },
                     {
@@ -7129,6 +7328,8 @@ export default [
                     {
                         "name": "三花智控",
                         "scale": 103323011045,
+                        "monopoly": true,
+                        "desc": '电子阀全球第一',
                         "id": "002050.SZ"
                     },
                     {
@@ -7490,6 +7691,8 @@ export default [
                     {
                         "name": "酒鬼酒",
                         "scale": 49688139622,
+                        "state": true,
+                        "desc": "中粮集团有限公司",
                         "id": "000799.SZ"
                     },
                     {
@@ -7595,6 +7798,8 @@ export default [
                     {
                         "name": "贵州茅台",
                         "scale": 2.4219493584E+12,
+                        "monopoly": true,
+                        "desc": '产品的唯一性',
                         "id": "600519.SH"
                     },
                     {
@@ -7982,6 +8187,8 @@ export default [
                     {
                         "name": "海天味业",
                         "scale": 370614026284,
+                        "monopoly": true,
+                        "desc": '酱油全球排名第一',
                         "id": "603288.SH"
                     },
                     {
@@ -8498,6 +8705,8 @@ export default [
                     {
                         "name": "际华集团",
                         "scale": 14668042209,
+                        "state": true,
+                        "desc": "新兴际华集团有限公司",
                         "id": "601718.SH"
                     },
                     {
@@ -8692,6 +8901,8 @@ export default [
                     {
                         "name": "冠豪高新",
                         "scale": 5570205716,
+                        "state": true,
+                        "desc": "中国诚通控股集团有限公司",
                         "id": "600433.SH"
                     },
                     {
@@ -8707,6 +8918,8 @@ export default [
                     {
                         "name": "岳阳林纸",
                         "scale": 9707792397,
+                        "state": true,
+                        "desc": "中国诚通控股集团有限公司",
                         "id": "600963.SH"
                     },
                     {
@@ -8939,6 +9152,8 @@ export default [
                     {
                         "name": "宝钢包装",
                         "scale": 7820344238,
+                        "state": true,
+                        "desc": "中国宝武钢铁集团有限公司",
                         "id": "601968.SH"
                     },
                     {
@@ -8981,6 +9196,8 @@ export default [
                     {
                         "name": "飞亚达",
                         "scale": 3.74893712E+9,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "000026.SZ"
                     },
                     {
@@ -9196,6 +9413,8 @@ export default [
                     {
                         "name": "乐凯胶片",
                         "scale": 3516226796,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "600135.SH"
                     },
                     {
@@ -9512,6 +9731,8 @@ export default [
                     {
                         "name": "新 和 成",
                         "scale": 64633921539,
+                        "monopoly": true,
+                        "desc": '维生素A全球第一',
                         "id": "002001.SZ"
                     },
                     {
@@ -9817,6 +10038,8 @@ export default [
                     {
                         "name": "华润双鹤",
                         "scale": 20871599194,
+                        "state": true,
+                        "desc": "华润(集团)有限公司",
                         "id": "600062.SH"
                     },
                     {
@@ -10114,11 +10337,16 @@ export default [
                     {
                         "name": "东阿阿胶",
                         "scale": 24336141392,
+                        "monopoly": true,
+                        "state": true,
+                        "desc": "阿胶资源垄断、华润(集团)有限公司",
                         "id": "000423.SZ"
                     },
                     {
                         "name": "云南白药",
                         "scale": 46641530921,
+                        "monopoly": true,
+                        "desc": '白药垄断',
                         "id": "000538.SZ"
                     },
                     {
@@ -10134,6 +10362,8 @@ export default [
                     {
                         "name": "华神科技",
                         "scale": 2933876285,
+                        "monopoly": true,
+                        "desc": "利卡汀唯一的市场竞争者",
                         "id": "000790.SZ"
                     },
                     {
@@ -10149,6 +10379,8 @@ export default [
                     {
                         "name": "华润三九",
                         "scale": 36807231487,
+                        "state": true,
+                        "desc": "华润(集团)有限公司",
                         "id": "000999.SZ"
                     },
                     {
@@ -10304,16 +10536,22 @@ export default [
                     {
                         "name": "金花股份",
                         "scale": 2911508223,
-                        "id": "600080.SH"
+                        "monopoly": true,
+                        "desc": '公司人工虎骨粉(全国唯一)',
+                        "id": "600080.SH",
                     },
                     {
                         "name": "同仁堂",
                         "scale": 67764345645,
+                        "monopoly": true,
+                        "desc": '中国中药行业的金字招牌',
                         "id": "600085.SH"
                     },
                     {
                         "name": "太极集团",
                         "scale": 15398029072,
+                        "state": true,
+                        "desc": "中国电子科技集团有限公司",
                         "id": "600129.SH"
                     },
                     {
@@ -10359,6 +10597,8 @@ export default [
                     {
                         "name": "片仔癀",
                         "scale": 181001196172,
+                        "monopoly": true,
+                        "desc": '被誉为”国宝神约”中国中约行业的金字招牌',
                         "id": "600436.SH"
                     },
                     {
@@ -10419,6 +10659,8 @@ export default [
                     {
                         "name": "健民集团",
                         "scale": 6660658596,
+                        "monopoly": true,
+                        "desc": '体外牛黄全国唯一',
                         "id": "600976.SH"
                     },
                     {
@@ -10496,6 +10738,8 @@ export default [
                     {
                         "name": "长春高新",
                         "scale": 87474314722,
+                        "monopoly": true,
+                        "desc": '生长激素全球唯一，唯一的市场竞争者',
                         "id": "000661.SZ"
                     },
                     {
@@ -10571,6 +10815,8 @@ export default [
                     {
                         "name": "我武生物",
                         "scale": 22345724492,
+                        "monopoly": true,
+                        "desc": '国内唯-生产标准化舌下脱敏药物的公司',
                         "id": "300357.SZ"
                     },
                     {
@@ -10611,6 +10857,8 @@ export default [
                     {
                         "name": "天坛生物",
                         "scale": 34818215538,
+                        "state": true,
+                        "desc": "中国医药集团有限公司",
                         "id": "600161.SH"
                     },
                     {
@@ -10626,6 +10874,8 @@ export default [
                     {
                         "name": "中源协和",
                         "scale": 9051352693,
+                        "monopoly": true,
+                        "desc": '两市唯的干细胞上市公司，唯一干细胞牌照，市场的唯一',
                         "id": "600645.SH"
                     },
                     {
@@ -10711,6 +10961,8 @@ export default [
                     {
                         "name": "华熙生物",
                         "scale": 14169391323,
+                        "monopoly": true,
+                        "desc": '食品级透明质酸钠原料全球第一',
                         "id": "688363.SH"
                     },
                     {
@@ -10753,6 +11005,8 @@ export default [
                     {
                         "name": "国药一致",
                         "scale": 10781949885,
+                        "state": true,
+                        "desc": "中国医药集团有限公司",
                         "id": "000028.SZ"
                     },
                     {
@@ -10763,6 +11017,8 @@ export default [
                     {
                         "name": "英特集团",
                         "scale": 3101145989,
+                        "state": true,
+                        "desc": "中国中化集团有限公司",
                         "id": "000411.SZ"
                     },
                     {
@@ -10868,6 +11124,8 @@ export default [
                     {
                         "name": "中国医药",
                         "scale": 20471361734,
+                        "state": true,
+                        "desc": "中国通用技术(集团)控股有限责任公司",
                         "id": "600056.SH"
                     },
                     {
@@ -10878,6 +11136,8 @@ export default [
                     {
                         "name": "国药股份",
                         "scale": 14248670418,
+                        "state": true,
+                        "desc": "中国医药集团有限公司",
                         "id": "600511.SH"
                     },
                     {
@@ -11055,6 +11315,8 @@ export default [
                     {
                         "name": "*ST和佳",
                         "scale": 1443517996,
+                        "monopoly": true,
+                        "desc": '肿瘤微创设备国内第一家也是目前唯一-家能提供较为完整的肿癌微创综合治疗解决方案的企业',
                         "id": "300273.SZ"
                     },
                     {
@@ -11676,6 +11938,8 @@ export default [
                     {
                         "name": "太阳能",
                         "scale": 2.50488311E+10,
+                        "state": true,
+                        "desc": "中国节能环保集团有限公司",
                         "id": "000591.SZ"
                     },
                     {
@@ -11701,6 +11965,8 @@ export default [
                     {
                         "name": "新能泰山",
                         "scale": 7583147657,
+                        "state": true,
+                        "desc": "中国华能集团有限公司",
                         "id": "000720.SZ"
                     },
                     {
@@ -11726,11 +11992,15 @@ export default [
                     {
                         "name": "吉电股份",
                         "scale": 16508322902,
+                        "state": true,
+                        "desc": "国家电力投资集团有限公司",
                         "id": "000875.SZ"
                     },
                     {
                         "name": "湖北能源",
                         "scale": 32137418625,
+                        "state": true,
+                        "desc": "中国长江三峡集团有限公司",
                         "id": "000883.SZ"
                     },
                     {
@@ -11741,6 +12011,8 @@ export default [
                     {
                         "name": "长源电力",
                         "scale": 6984459947,
+                        "state": true,
+                        "desc": "国家能源投资集团有限责任公司",
                         "id": "000966.SZ"
                     },
                     {
@@ -11766,6 +12038,8 @@ export default [
                     {
                         "name": "黔源电力",
                         "scale": 6370537882,
+                        "state": true,
+                        "desc": "中国华电集团有限公司",
                         "id": "002039.SZ"
                     },
                     {
@@ -11806,6 +12080,8 @@ export default [
                     {
                         "name": "中国广核",
                         "scale": 26629391129,
+                        "state": true,
+                        "desc": "中国广核集团有限公司",
                         "id": "003816.SZ"
                     },
                     {
@@ -11816,11 +12092,15 @@ export default [
                     {
                         "name": "华能国际",
                         "scale": 75554267144,
+                        "state": true,
+                        "desc": "中国华能集团有限公司",
                         "id": "600011.SH"
                     },
                     {
                         "name": "上海电力",
                         "scale": 24156425538,
+                        "state": true,
+                        "desc": "国家电力投资集团有限公司",
                         "id": "600021.SH"
                     },
                     {
@@ -11836,6 +12116,8 @@ export default [
                     {
                         "name": "华电国际",
                         "scale": 39832683529,
+                        "state": true,
+                        "desc": "中国华电集团有限公司",
                         "id": "600027.SH"
                     },
                     {
@@ -11851,6 +12133,8 @@ export default [
                     {
                         "name": "明星电力",
                         "scale": 4.23961266E+9,
+                        "state": true,
+                        "desc": "国家电网公司",
                         "id": "600101.SH"
                     },
                     {
@@ -11881,6 +12165,8 @@ export default [
                     {
                         "name": "桂冠电力",
                         "scale": 47530738146,
+                        "state": true,
+                        "desc": "中国大唐集团有限公司",
                         "id": "600236.SH"
                     },
                     {
@@ -11891,11 +12177,15 @@ export default [
                     {
                         "name": "金山股份",
                         "scale": 4683207678,
+                        "state": true,
+                        "desc": "中国华电集团有限公司",
                         "id": "600396.SH"
                     },
                     {
                         "name": "涪陵电力",
                         "scale": 12182580265,
+                        "state": true,
+                        "desc": "国家电网公司",
                         "id": "600452.SH"
                     },
                     {
@@ -11906,6 +12196,8 @@ export default [
                     {
                         "name": "西昌电力",
                         "scale": 3510785025,
+                        "state": true,
+                        "desc": "国家电网公司",
                         "id": "600505.SH"
                     },
                     {
@@ -11946,6 +12238,8 @@ export default [
                     {
                         "name": "华银电力",
                         "scale": 3881605345,
+                        "state": true,
+                        "desc": "中国大唐集团有限公司",
                         "id": "600744.SH"
                     },
                     {
@@ -11956,11 +12250,15 @@ export default [
                     {
                         "name": "国电电力",
                         "scale": 70093982992,
+                        "state": true,
+                        "desc": "国家能源投资集团有限责任公司",
                         "id": "600795.SH"
                     },
                     {
                         "name": "内蒙华电",
                         "scale": 23757871632,
+                        "state": true,
+                        "desc": "中国华能集团有限公司",
                         "id": "600863.SH"
                     },
                     {
@@ -11971,11 +12269,15 @@ export default [
                     {
                         "name": "国投电力",
                         "scale": 72166447875,
+                        "state": true,
+                        "desc": "国家开发投资公司集团有限公司",
                         "id": "600886.SH"
                     },
                     {
                         "name": "长江电力",
                         "scale": 551035249143,
+                        "state": true,
+                        "desc": "中国长江三峡集团有限公司",
                         "id": "600900.SH"
                     },
                     {
@@ -12001,11 +12303,15 @@ export default [
                     {
                         "name": "文山电力",
                         "scale": 8393353056,
+                        "state": true,
+                        "desc": "中国南方电网有限责任公司",
                         "id": "600995.SH"
                     },
                     {
                         "name": "节能风电",
                         "scale": 22448275121,
+                        "state": true,
+                        "desc": "中国节能环保集团有限公司",
                         "id": "601016.SH"
                     },
                     {
@@ -12021,11 +12327,15 @@ export default [
                     {
                         "name": "中国核电",
                         "scale": 118757531069,
+                        "state": true,
+                        "desc": "中国核工业集团有限公司",
                         "id": "601985.SH"
                     },
                     {
                         "name": "大唐发电",
                         "scale": 35204893061,
+                        "state": true,
+                        "desc": "中国大唐集团有限公司",
                         "id": "601991.SH"
                     },
                     {
@@ -12372,6 +12682,8 @@ export default [
                     {
                         "name": "国统股份",
                         "scale": 1912326816,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "002205.SZ"
                     },
                     {
@@ -12437,6 +12749,8 @@ export default [
                     {
                         "name": "中环装备",
                         "scale": 3128892257,
+                        "state": true,
+                        "desc": "中国节能环保集团有限公司",
                         "id": "300140.SZ"
                     },
                     {
@@ -12602,6 +12916,8 @@ export default [
                     {
                         "name": "中材节能",
                         "scale": 4.21245E+9,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "603126.SH"
                     },
                     {
@@ -12682,6 +12998,8 @@ export default [
                     {
                         "name": "中航泰达",
                         "scale": 581427671,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "836263.BJ"
                     }
                 ],
@@ -12721,6 +13039,8 @@ export default [
                     {
                         "name": "招商港口",
                         "scale": 9382357106,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "001872.SZ"
                     },
                     {
@@ -12766,6 +13086,8 @@ export default [
                     {
                         "name": "宁波港",
                         "scale": 50452007108,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "601018.SH"
                     },
                     {
@@ -12843,16 +13165,22 @@ export default [
                     {
                         "name": "中原高速",
                         "scale": 6764589214,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600020.SH"
                     },
                     {
                         "name": "福建高速",
                         "scale": 7.82154E+9,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600033.SH"
                     },
                     {
                         "name": "楚天高速",
                         "scale": 5554899858,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600035.SH"
                     },
                     {
@@ -12868,16 +13196,22 @@ export default [
                     {
                         "name": "山东高速",
                         "scale": 25149776776,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600350.SH"
                     },
                     {
                         "name": "五洲交通",
                         "scale": 4.31117082E+9,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600368.SH"
                     },
                     {
                         "name": "宁沪高速",
                         "scale": 28934612638,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600377.SH"
                     },
                     {
@@ -12893,11 +13227,15 @@ export default [
                     {
                         "name": "龙江交通",
                         "scale": 3.89500057E+9,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "601188.SH"
                     },
                     {
                         "name": "吉林高速",
                         "scale": 3727090534,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "601518.SH"
                     }
                 ],
@@ -12972,6 +13310,8 @@ export default [
                     {
                         "name": "南方航空",
                         "scale": 64794068808,
+                        "state": true,
+                        "desc": "中国南方航空集团有限公司",
                         "id": "600029.SH"
                     },
                     {
@@ -12992,6 +13332,8 @@ export default [
                     {
                         "name": "中国国航",
                         "scale": 99820560846,
+                        "state": true,
+                        "desc": "中国航空集团有限公司",
                         "id": "601111.SH"
                     },
                     {
@@ -13051,11 +13393,15 @@ export default [
                     {
                         "name": "中远海能",
                         "scale": 37234821286,
+                        "state": true,
+                        "desc": "中国远洋海运集团有限公司",
                         "id": "600026.SH"
                     },
                     {
                         "name": "中远海特",
                         "scale": 11742179717,
+                        "state": true,
+                        "desc": "中国远洋海运集团有限公司",
                         "id": "600428.SH"
                     },
                     {
@@ -13066,16 +13412,22 @@ export default [
                     {
                         "name": "中远海发",
                         "scale": 23086471738,
+                        "state": true,
+                        "desc": "中国远洋海运集团有限公司",
                         "id": "601866.SH"
                     },
                     {
                         "name": "招商轮船",
                         "scale": 54003568279,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "601872.SH"
                     },
                     {
                         "name": "中远海控",
                         "scale": 175384922937,
+                        "state": true,
+                        "desc": "中国远洋海运集团有限公司",
                         "id": "601919.SH"
                     },
                     {
@@ -13280,6 +13632,8 @@ export default [
                     {
                         "name": "中储股份",
                         "scale": 11653327355,
+                        "state": true,
+                        "desc": "中国诚通控股集团有限公司",
                         "id": "600787.SH"
                     },
                     {
@@ -13315,6 +13669,8 @@ export default [
                     {
                         "name": "华贸物流",
                         "scale": 11366138588,
+                        "state": true,
+                        "desc": "中国诚通控股集团有限公司",
                         "id": "603128.SH"
                     },
                     {
@@ -13469,6 +13825,8 @@ export default [
                     {
                         "name": "广宇发展",
                         "scale": 24436271846,
+                        "state": true,
+                        "desc": "国家电网公司",
                         "id": "000537.SZ"
                     },
                     {
@@ -13629,6 +13987,8 @@ export default [
                     {
                         "name": "招商蛇口",
                         "scale": 105160074141,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "001979.SZ"
                     },
                     {
@@ -13669,6 +14029,8 @@ export default [
                     {
                         "name": "南山控股",
                         "scale": 4857481919,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "002314.SZ"
                     },
                     {
@@ -14045,6 +14407,8 @@ export default [
                     {
                         "name": "中成股份",
                         "scale": 3246505518,
+                        "state": true,
+                        "desc": "国家开发投资公司集团有限公司",
                         "id": "000151.SZ"
                     },
                     {
@@ -14065,6 +14429,8 @@ export default [
                     {
                         "name": "五矿发展",
                         "scale": 10343938361,
+                        "state": true,
+                        "desc": "中国五矿集团有限公司",
                         "id": "600058.SH"
                     },
                     {
@@ -14719,6 +15085,8 @@ export default [
                     {
                         "name": "中国中免",
                         "scale": 382021364939,
+                        "state": true,
+                        "desc": "中国旅游集团有限公司",
                         "id": "601888.SH"
                     }
                 ],
@@ -14852,6 +15220,8 @@ export default [
                     {
                         "name": "招商银行",
                         "scale": 709016820025,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600036.SH"
                     },
                     {
@@ -15086,6 +15456,8 @@ export default [
                     {
                         "name": "长城证券",
                         "scale": 28861669764,
+                        "state": true,
+                        "desc": "中国华能集团有限公司",
                         "id": "002939.SZ"
                     },
                     {
@@ -15166,6 +15538,8 @@ export default [
                     {
                         "name": "招商证券",
                         "scale": 102720552964,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "600999.SH"
                     },
                     {
@@ -15355,6 +15729,8 @@ export default [
                     {
                         "name": "中粮资本",
                         "scale": 8077571654,
+                        "state": true,
+                        "desc": "中粮集团有限公司",
                         "id": "002423.SZ"
                     },
                     {
@@ -15395,6 +15771,8 @@ export default [
                     {
                         "name": "五矿资本",
                         "scale": 22130482058,
+                        "state": true,
+                        "desc": "中国五矿集团有限公司",
                         "id": "600390.SH"
                     },
                     {
@@ -15425,6 +15803,8 @@ export default [
                     {
                         "name": "ST安信",
                         "scale": 2.095187627E+10,
+                        "state": true,
+                        "desc": "国家开发投资公司集团有限公司",
                         "id": "600816.SH"
                     },
                     {
@@ -15519,6 +15899,8 @@ export default [
                     {
                         "name": "钢研纳克",
                         "scale": 1137104377,
+                        "state": true,
+                        "desc": "中国钢研科技集团有限公司",
                         "id": "300797.SZ"
                     },
                     {
@@ -15649,6 +16031,8 @@ export default [
                     {
                         "name": "国检集团",
                         "scale": 9.25803648E+9,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "603060.SH"
                     },
                     {
@@ -15698,6 +16082,8 @@ export default [
                     {
                         "name": "天山股份",
                         "scale": 9760306327,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "000877.SZ"
                     },
                     {
@@ -15723,6 +16109,8 @@ export default [
                     {
                         "name": "宁夏建材",
                         "scale": 5719045262,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "600449.SH"
                     },
                     {
@@ -15738,6 +16126,8 @@ export default [
                     {
                         "name": "祁连山",
                         "scale": 8809446497,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "600720.SH"
                     },
                     {
@@ -15842,6 +16232,8 @@ export default [
                     {
                         "name": "北新建材",
                         "scale": 46529045969,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "000786.SZ"
                     },
                     {
@@ -15852,6 +16244,8 @@ export default [
                     {
                         "name": "瑞泰科技",
                         "scale": 2.95911E+9,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "002066.SZ"
                     },
                     {
@@ -15887,6 +16281,8 @@ export default [
                     {
                         "name": "西部建设",
                         "scale": 9.59389271E+9,
+                        "state": true,
+                        "desc": "中国建筑集团有限公司",
                         "id": "002302.SZ"
                     },
                     {
@@ -16176,6 +16572,8 @@ export default [
                     {
                         "name": "中国建筑",
                         "scale": 200910004872,
+                        "state": true,
+                        "desc": "中国建筑集团有限公司",
                         "id": "601668.SH"
                     },
                     {
@@ -16470,16 +16868,22 @@ export default [
                     {
                         "name": "中国铁建",
                         "scale": 84088724605,
+                        "state": true,
+                        "desc": "中国铁道建筑集团有限公司",
                         "id": "601186.SH"
                     },
                     {
                         "name": "中国中铁",
                         "scale": 1.1444309077E+11,
+                        "state": true,
+                        "desc": "中国铁路工程集团有限公司",
                         "id": "601390.SH"
                     },
                     {
                         "name": "中国核建",
                         "scale": 21131969284,
+                        "state": true,
+                        "desc": "中国核工业集团有限公司",
                         "id": "601611.SH"
                     },
                     {
@@ -16490,6 +16894,8 @@ export default [
                     {
                         "name": "中国交建",
                         "scale": 92450742795,
+                        "state": true,
+                        "desc": "中国交通建设集团有限公司",
                         "id": "601800.SH"
                     },
                     {
@@ -16547,16 +16953,22 @@ export default [
                     {
                         "name": "北方国际",
                         "scale": 7.57719201E+9,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "000065.SZ"
                     },
                     {
                         "name": "中钢国际",
                         "scale": 7557993969,
+                        "state": true,
+                        "desc": "中国中钢集团有限公司",
                         "id": "000928.SZ"
                     },
                     {
                         "name": "中工国际",
                         "scale": 8876100542,
+                        "state": true,
+                        "desc": "中国机械工业集团有限公司",
                         "id": "002051.SZ"
                     },
                     {
@@ -16567,6 +16979,8 @@ export default [
                     {
                         "name": "东华科技",
                         "scale": 5747747416,
+                        "state": true,
+                        "desc": "中国化学工程集团有限公司",
                         "id": "002140.SZ"
                     },
                     {
@@ -16667,6 +17081,8 @@ export default [
                     {
                         "name": "中材国际",
                         "scale": 18506394934,
+                        "state": true,
+                        "desc": "中国建材集团有限公司",
                         "id": "600970.SH"
                     },
                     {
@@ -16677,16 +17093,22 @@ export default [
                     {
                         "name": "中国化学",
                         "scale": 52499548237,
+                        "state": true,
+                        "desc": "中国化学工程集团有限公司",
                         "id": "601117.SH"
                     },
                     {
                         "name": "华电重工",
                         "scale": 6.29475E+9,
+                        "state": true,
+                        "desc": "中国华电集团有限公司",
                         "id": "601226.SH"
                     },
                     {
                         "name": "中国中冶",
                         "scale": 57663959919,
+                        "state": true,
+                        "desc": "中国五矿集团有限公司",
                         "id": "601618.SH"
                     },
                     {
@@ -16707,6 +17129,8 @@ export default [
                     {
                         "name": "航天工程",
                         "scale": 7.2305051E+9,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "603698.SH"
                     },
                     {
@@ -17005,6 +17429,8 @@ export default [
                     {
                         "name": "许继电气",
                         "scale": 2.224243267E+10,
+                        "state": true,
+                        "desc": "国家电网公司",
                         "id": "000400.SZ"
                     },
                     {
@@ -17160,11 +17586,15 @@ export default [
                     {
                         "name": "国电南自",
                         "scale": 7056941618,
+                        "state": true,
+                        "desc": "中国华电集团有限公司",
                         "id": "600268.SH"
                     },
                     {
                         "name": "国电南瑞",
                         "scale": 186236212257,
+                        "state": true,
+                        "desc": "国家电网公司",
                         "id": "600406.SH"
                     },
                     {
@@ -17427,6 +17857,8 @@ export default [
                     {
                         "name": "龙源技术",
                         "scale": 3423134212,
+                        "state": true,
+                        "desc": "国家能源投资集团有限责任公司",
                         "id": "300105.SZ"
                     },
                     {
@@ -17527,6 +17959,8 @@ export default [
                     {
                         "name": "宁德时代",
                         "scale": 1.02340556802E+12,
+                        "monopoly": true,
+                        "desc": '动力电池装机全球第一',
                         "id": "300750.SZ"
                     },
                     {
@@ -17597,6 +18031,8 @@ export default [
                     {
                         "name": "航天机电",
                         "scale": 15246101811,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "600151.SH"
                     },
                     {
@@ -17632,6 +18068,8 @@ export default [
                     {
                         "name": "通威股份",
                         "scale": 230119143166,
+                        "monopoly": true,
+                        "desc": '电池片全球第一',
                         "id": "600438.SH"
                     },
                     {
@@ -17657,11 +18095,15 @@ export default [
                     {
                         "name": "东方电气",
                         "scale": 3.30987129E+10,
+                        "state": true,
+                        "desc": "中国东方电气集团有限公司",
                         "id": "600875.SH"
                     },
                     {
                         "name": "隆基绿能",
                         "scale": 443917248046,
+                        "monopoly": true,
+                        "desc": '光伏组件全球第一',
                         "id": "601012.SH"
                     },
                     {
@@ -17692,6 +18134,8 @@ export default [
                     {
                         "name": "日月股份",
                         "scale": 25060661005,
+                        "monopoly": true,
+                        "desc": '风电铸件全球第一-一',
                         "id": "603218.SH"
                     },
                     {
@@ -17762,6 +18206,8 @@ export default [
                     {
                         "name": "固德威",
                         "scale": 29002594156,
+                        "monopoly": true,
+                        "desc": '储能逆变器世界第一',
                         "id": "688390.SH"
                     },
                     {
@@ -18064,6 +18510,8 @@ export default [
                     {
                         "name": "平高电气",
                         "scale": 11615246405,
+                        "state": true,
+                        "desc": "国家电网公司",
                         "id": "600312.SH"
                     },
                     {
@@ -18084,6 +18532,8 @@ export default [
                     {
                         "name": "保变电气",
                         "scale": 1.1509553E+10,
+                        "state": true,
+                        "desc": "中国兵器装备集团有限公司",
                         "id": "600550.SH"
                     },
                     {
@@ -18099,6 +18549,8 @@ export default [
                     {
                         "name": "宏发股份",
                         "scale": 39767546809,
+                        "monopoly": true,
+                        "desc": '高压直流(汽车)继电器全球第一',
                         "id": "600885.SH"
                     },
                     {
@@ -18109,6 +18561,8 @@ export default [
                     {
                         "name": "中国西电",
                         "scale": 25526894113,
+                        "state": true,
+                        "desc": "中国西电集团有限公司",
                         "id": "601179.SH"
                     },
                     {
@@ -18242,6 +18696,8 @@ export default [
                     },
                     {
                         "name": "中核科技",
+                        "state": true,
+                        "desc": "中国核工业集团有限公司",
                         "scale": 4217472061,
                         "id": "000777.SZ"
                     },
@@ -18688,6 +19144,8 @@ export default [
                     {
                         "name": "黄河旋风",
                         "scale": 14842854373,
+                        "monopoly": true,
+                        "desc": '人造金刚石的产量和销量都位居世界第一，唯一的市场竞争者',
                         "id": "600172.SH"
                     },
                     {
@@ -18980,6 +19438,8 @@ export default [
                     {
                         "name": "石化机械",
                         "scale": 5979782427,
+                        "state": true,
+                        "desc": "中国石油化工集团有限公司",
                         "id": "000852.SZ"
                     },
                     {
@@ -19035,6 +19495,8 @@ export default [
                     {
                         "name": "大连重工",
                         "scale": 13596845025,
+                        "monopoly": true,
+                        "desc": '大型高端铸钢技术垄断地位。',
                         "id": "002204.SZ"
                     },
                     {
@@ -19590,6 +20052,8 @@ export default [
                     {
                         "name": "北方股份",
                         "scale": 3.2419E+9,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "600262.SH"
                     },
                     {
@@ -19600,6 +20064,8 @@ export default [
                     {
                         "name": "振华重工",
                         "scale": 12457491229,
+                        "state": true,
+                        "desc": "中国交通建设集团有限公司",
                         "id": "600320.SH"
                     },
                     {
@@ -19615,6 +20081,8 @@ export default [
                     {
                         "name": "国机通用",
                         "scale": 2164116155,
+                        "state": true,
+                        "desc": "中国机械工业集团有限公司",
                         "id": "600444.SH"
                     },
                     {
@@ -19625,6 +20093,8 @@ export default [
                     {
                         "name": "航天晨光",
                         "scale": 5.22391664E+9,
+                        "state": true,
+                        "desc": "中国航天科工集团有限公司",
                         "id": "600501.SH"
                     },
                     {
@@ -19645,16 +20115,22 @@ export default [
                     {
                         "name": "金自天正",
                         "scale": 2770967745,
+                        "state": true,
+                        "desc": "中国钢研科技集团有限公司",
                         "id": "600560.SH"
                     },
                     {
                         "name": "克劳斯",
                         "scale": 3110153913,
+                        "state": true,
+                        "desc": "中国化工集团有限公司",
                         "id": "600579.SH"
                     },
                     {
                         "name": "天地科技",
                         "scale": 20237699682,
+                        "state": true,
+                        "desc": "中国煤炭科工集团有限公司",
                         "id": "600582.SH"
                     },
                     {
@@ -19690,11 +20166,15 @@ export default [
                     {
                         "name": "一拖股份",
                         "scale": 6.3013851E+9,
+                        "state": true,
+                        "desc": "中国机械工业集团有限公司",
                         "id": "601038.SH"
                     },
                     {
                         "name": "中国一重",
                         "scale": 21259127074,
+                        "state": true,
+                        "desc": "中国一重集团有限公司",
                         "id": "601106.SH"
                     },
                     {
@@ -19710,6 +20190,8 @@ export default [
                     {
                         "name": "蓝科高新",
                         "scale": 2783046354,
+                        "state": true,
+                        "desc": "中国机械工业集团有限公司",
                         "id": "601798.SH"
                     },
                     {
@@ -20137,6 +20619,8 @@ export default [
                     {
                         "name": "航天科技",
                         "scale": 7519057245,
+                        "state": true,
+                        "desc": "中国航天科工集团有限公司",
                         "id": "000901.SZ"
                     },
                     {
@@ -20182,6 +20666,8 @@ export default [
                     {
                         "name": "中航电测",
                         "scale": 7177740063,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "300114.SZ"
                     },
                     {
@@ -20257,6 +20743,8 @@ export default [
                     {
                         "name": "理工光科",
                         "scale": 1814794404,
+                        "state": true,
+                        "desc": "中国信息通信科技集团有限公司",
                         "id": "300557.SZ"
                     },
                     {
@@ -20384,6 +20872,8 @@ export default [
                     {
                         "name": "中集集团",
                         "scale": 21341715563,
+                        "state": true,
+                        "desc": "招商局集团有限公司",
                         "id": "000039.SZ"
                     },
                     {
@@ -20616,11 +21106,15 @@ export default [
                     {
                         "name": "晋西车轴",
                         "scale": 5243548445,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "600495.SH"
                     },
                     {
                         "name": "中铁工业",
                         "scale": 18461093696,
+                        "state": true,
+                        "desc": "中国铁路工程集团有限公司",
                         "id": "600528.SH"
                     },
                     {
@@ -20656,6 +21150,8 @@ export default [
                     {
                         "name": "中国通号",
                         "scale": 8953666597,
+                        "state": true,
+                        "desc": "中国铁路通信信号集团有限公司",
                         "id": "688009.SH"
                     },
                     {
@@ -20730,11 +21226,15 @@ export default [
                     {
                         "name": "中天火箭",
                         "scale": 2242421488,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "003009.SZ"
                     },
                     {
                         "name": "钢研高纳",
                         "scale": 23193203853,
+                        "state": true,
+                        "desc": "中国钢研科技集团有限公司",
                         "id": "300034.SZ"
                     },
                     {
@@ -20760,21 +21260,29 @@ export default [
                     {
                         "name": "中国卫星",
                         "scale": 25825562708,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "600118.SH"
                     },
                     {
                         "name": "航天动力",
                         "scale": 7.24364205E+9,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "600343.SH"
                     },
                     {
                         "name": "航天电子",
                         "scale": 18491044731,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "600879.SH"
                     },
                     {
                         "name": "中国卫通",
                         "scale": 4.556E+10,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "601698.SH"
                     },
                     {
@@ -20812,16 +21320,22 @@ export default [
                     {
                         "name": "航发控制",
                         "scale": 37316763058,
+                        "state": true,
+                        "desc": "中国航空发动机集团有限公司",
                         "id": "000738.SZ"
                     },
                     {
                         "name": "中航西飞",
                         "scale": 86935302154,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "000768.SZ"
                     },
                     {
                         "name": "中航机电",
                         "scale": 4.770517348E+10,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "002013.SZ"
                     },
                     {
@@ -20832,6 +21346,8 @@ export default [
                     {
                         "name": "中航光电",
                         "scale": 9.833087756E+10,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "002179.SZ"
                     },
                     {
@@ -20847,6 +21363,8 @@ export default [
                     {
                         "name": "航天彩虹",
                         "scale": 17523755043,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "002389.SZ"
                     },
                     {
@@ -20927,31 +21445,43 @@ export default [
                     {
                         "name": "中航电子",
                         "scale": 37137406744,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "600372.SH"
                     },
                     {
                         "name": "航发科技",
                         "scale": 6691722269,
+                        "state": true,
+                        "desc": "中国航空发动机集团有限公司",
                         "id": "600391.SH"
                     },
                     {
                         "name": "中航沈飞",
                         "scale": 129494013866,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "600760.SH"
                     },
                     {
                         "name": "中航重机",
                         "scale": 43505635315,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "600765.SH"
                     },
                     {
                         "name": "中航高科",
                         "scale": 36692913478,
+                        "state": true,
+                        "desc": "中国航空工业集团有限公司",
                         "id": "600862.SH"
                     },
                     {
                         "name": "航发动力",
                         "scale": 121215048956,
+                        "state": true,
+                        "desc": "中国航空发动机集团有限公司",
                         "id": "600893.SH"
                     },
                     {
@@ -21009,11 +21539,15 @@ export default [
                     {
                         "name": "中兵红箭",
                         "scale": 49119588634,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "000519.SZ"
                     },
                     {
                         "name": "航天发展",
                         "scale": 20171718891,
+                        "state": true,
+                        "desc": "中国航天科工集团有限公司",
                         "id": "000547.SZ"
                     },
                     {
@@ -21054,16 +21588,22 @@ export default [
                     {
                         "name": "光电股份",
                         "scale": 7051425048,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "600184.SH"
                     },
                     {
                         "name": "北方导航",
                         "scale": 1.41932196E+10,
+                        "state": true,
+                        "desc": "中国兵器工业集团有限公司",
                         "id": "600435.SH"
                     },
                     {
                         "name": "国睿科技",
                         "scale": 10637888787,
+                        "state": true,
+                        "desc": "中国电子科技集团有限公司",
                         "id": "600562.SH"
                     },
                     {
@@ -21074,11 +21614,15 @@ export default [
                     {
                         "name": "内蒙一机",
                         "scale": 15477027444,
+                        "monopoly": true,
+                        "desc": '国家唯一的集主战坦克系列和中重型轮式装甲车系列为一体的装备研制生产基地',
                         "id": "600967.SH"
                     },
                     {
                         "name": "四创电子",
                         "scale": 6762565309,
+                        "state": true,
+                        "desc": "中国电子科技集团有限公司",
                         "id": "600990.SH"
                     },
                     {
@@ -21146,6 +21690,8 @@ export default [
                     {
                         "name": "中船科技",
                         "scale": 9497623491,
+                        "state": true,
+                        "desc": "中国船舶集团有限公司",
                         "id": "600072.SH"
                     },
                     {
@@ -21161,6 +21707,8 @@ export default [
                     {
                         "name": "中船防务",
                         "scale": 18038716575,
+                        "state": true,
+                        "desc": "中国船舶集团有限公司",
                         "id": "600685.SH"
                     },
                     {
@@ -21190,6 +21738,8 @@ export default [
                     {
                         "name": "中国长城",
                         "scale": 30752260736,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "000066.SZ"
                     },
                     {
@@ -21225,6 +21775,8 @@ export default [
                     {
                         "name": "卫 士 通",
                         "scale": 32036417014,
+                        "state": true,
+                        "desc": "中国电子科技集团有限公司",
                         "id": "002268.SZ"
                     },
                     {
@@ -21345,6 +21897,8 @@ export default [
                     {
                         "name": "康拓红外",
                         "scale": 5331144543,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "300455.SZ"
                     },
                     {
@@ -21410,6 +21964,8 @@ export default [
                     {
                         "name": "同方股份",
                         "scale": 13782130122,
+                        "state": true,
+                        "desc": "中国核工业集团有限公司",
                         "id": "600100.SH"
                     },
                     {
@@ -21420,6 +21976,8 @@ export default [
                     {
                         "name": "航天长峰",
                         "scale": 3999851782,
+                        "state": true,
+                        "desc": "中国航天科工集团有限公司",
                         "id": "600855.SH"
                     },
                     {
@@ -21492,6 +22050,8 @@ export default [
                     {
                         "name": "神州信息",
                         "scale": 11216255731,
+                        "monopoly": true,
+                        "desc": '国内唯一涉足金融科技全产业链综合服务商',
                         "id": "000555.SZ"
                     },
                     {
@@ -21542,11 +22102,15 @@ export default [
                     {
                         "name": "科大讯飞",
                         "scale": 86725079754,
+                        "monopoly": true,
+                        "desc": '智能语音引领国内外，中文语音产业，语音市场绝对领先地位',
                         "id": "002230.SZ"
                     },
                     {
                         "name": "启明信息",
                         "scale": 5793217092,
+                        "state": true,
+                        "desc": "中国第一汽车集团有限公司",
                         "id": "002232.SZ"
                     },
                     {
@@ -21607,6 +22171,8 @@ export default [
                     {
                         "name": "四维图新",
                         "scale": 31763651024,
+                        "state": true,
+                        "desc": "中国航天科技集团有限公司",
                         "id": "002405.SZ"
                     },
                     {
@@ -21807,6 +22373,8 @@ export default [
                     {
                         "name": "易华录",
                         "scale": 11207348393,
+                        "state": true,
+                        "desc": "中国华录集团有限公司",
                         "id": "300212.SZ"
                     },
                     {
@@ -22222,6 +22790,8 @@ export default [
                     {
                         "name": "航天信息",
                         "scale": 20289086786,
+                        "state": true,
+                        "desc": "中国航天科工集团有限公司",
                         "id": "600271.SH"
                     },
                     {
@@ -22242,6 +22812,8 @@ export default [
                     {
                         "name": "中国软件",
                         "scale": 2.648878262E+10,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "600536.SH"
                     },
                     {
@@ -22292,6 +22864,8 @@ export default [
                     {
                         "name": "宝信软件",
                         "scale": 57381256905,
+                        "state": true,
+                        "desc": "中国宝武钢铁集团有限公司",
                         "id": "600845.SH"
                     },
                     {
@@ -22701,6 +23275,8 @@ export default [
                     {
                         "name": "奥飞娱乐",
                         "scale": 4564388275,
+                        "monopoly": true,
+                        "desc": '国内唯一学握产业链的动漫企业',
                         "id": "002292.SZ"
                     },
                     {
@@ -23589,11 +24165,15 @@ export default [
                     {
                         "name": "中国联通",
                         "scale": 111155058854,
+                        "state": true,
+                        "desc": "中国联合网络通信集团有限公司",
                         "id": "600050.SH"
                     },
                     {
                         "name": "中国移动",
                         "scale": 30369284948,
+                        "state": true,
+                        "desc": "中国移动通信集团有限公司",
                         "id": "600941.SH"
                     },
                     {
@@ -23616,6 +24196,8 @@ export default [
                     {
                         "name": "深桑达Ａ",
                         "scale": 10283982785,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "000032.SZ"
                     },
                     {
@@ -23641,6 +24223,8 @@ export default [
                     {
                         "name": "高鸿股份",
                         "scale": 5806704009,
+                        "state": true,
+                        "desc": "中国信息通信科技集团有限公司",
                         "id": "000851.SZ"
                     },
                     {
@@ -23681,6 +24265,8 @@ export default [
                     {
                         "name": "光迅科技",
                         "scale": 13504602264,
+                        "state": true,
+                        "desc": "中国信息通信科技集团有限公司",
                         "id": "002281.SZ"
                     },
                     {
@@ -23706,6 +24292,8 @@ export default [
                     {
                         "name": "普天科技",
                         "scale": 15725371716,
+                        "state": true,
+                        "desc": "中国电子科技集团有限公司",
                         "id": "002544.SZ"
                     },
                     {
@@ -23921,6 +24509,8 @@ export default [
                     {
                         "name": "亿联网络",
                         "scale": 38983649463,
+                        "monopoly": true,
+                        "desc": 'SP出货量全球第一',
                         "id": "300628.SZ"
                     },
                     {
@@ -23996,6 +24586,8 @@ export default [
                     {
                         "name": "长江通信",
                         "scale": 3.3165E+9,
+                        "state": true,
+                        "desc": "中国信息通信科技集团有限公司",
                         "id": "600345.SH"
                     },
                     {
@@ -24016,6 +24608,8 @@ export default [
                     {
                         "name": "烽火通信",
                         "scale": 16848705854,
+                        "state": true,
+                        "desc": "中国信息通信科技集团有限公司",
                         "id": "600498.SH"
                     },
                     {
@@ -24031,6 +24625,8 @@ export default [
                     {
                         "name": "南京熊猫",
                         "scale": 6516833731,
+                        "state": true,
+                        "desc": "中国电子信息产业集团有限公司",
                         "id": "600775.SH"
                     },
                     {
@@ -24071,6 +24667,8 @@ export default [
                     {
                         "name": "移远通信",
                         "scale": 29471754752,
+                        "monopoly": true,
+                        "desc": '大蜂窝物联网模组全球第一',
                         "id": "603236.SH"
                     },
                     {

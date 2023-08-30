@@ -97,12 +97,12 @@ export default {
       let listData = [...list]
       let lastCount = listData.pop()[5]
       let totalCount = 0
-      for(let i = 0;i< 5 ;i++){
-        let item = listData.pop()
-        totalCount += item[5]
+      for(let i = 0;i< 8 ;i++){
+        let item = listData.pop() || []
+        totalCount += (item[5] || 0)
       }
       if(lastCount >= totalCount){
-        console.log(list[list.length - 1][5],totalCount, list[list.length - 2][5],list[list.length - 3][5],list[list.length - 4][5],list[list.length - 5][5],list[list.length - 6][5])
+        //console.log(list[list.length - 1][5],totalCount, list[list.length - 2][5],list[list.length - 3][5],list[list.length - 4][5],list[list.length - 5][5],list[list.length - 6][5])
         return true
       }
       // totalCount = 0
@@ -274,8 +274,8 @@ export default {
     },
     getDayData(code) {
       return new Promise((resole) => {
-        let endTime = moment().format("YYYY-MM-DD");
-        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 30).format(
+        let endTime = moment(Date.now()).format("YYYY-MM-DD");
+        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 50).format(
           "YYYY-MM-DD"
         );
         request

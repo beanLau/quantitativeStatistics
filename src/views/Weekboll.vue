@@ -5,39 +5,22 @@
       <el-table-column prop="typeName" label="类型"> </el-table-column>
       <el-table-column prop="code" label="编号">
         <template slot-scope="scope">
-          <div style="font-size:12px;">
-            <div>编号: {{scope.row.code}}</div>
-            <div :style="{color: scope.row.state ? 'red': ''}">名称: {{scope.row.name}} {{scope.row.state}}</div>
-            <div>描述: {{scope.row.desc}}</div>
-            <div>{{scope.row.market}}（亿）    {{scope.row.ttm}}</div>
+          <div style="font-size: 12px">
+            <div>编号: {{ scope.row.code }}</div>
+            <div :style="{ color: scope.row.state ? 'red' : '' }">
+              名称: {{ scope.row.name }} {{ scope.row.state }}
+            </div>
+            <div>描述: {{ scope.row.desc }}</div>
+            <div>{{ scope.row.market }}（亿） {{ scope.row.ttm }}</div>
           </div>
-        </template>
-      </el-table-column>
-      <!-- <el-table-column prop="name" label="名称"> </el-table-column> -->
-      <!-- <el-table-column prop="market" label="市值"> </el-table-column>
-      <el-table-column prop="ttm" label="市盈率"> </el-table-column> -->
-      <!-- <el-table-column
-        prop="dayKDJ"
-        label="日金叉">
-        <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.dayKDJ"></i>
         </template>
       </el-table-column>
       <el-table-column
         prop="weekKDJ"
-        label="周金叉">
-        <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="weekKDJ2"
-        label="周二次金叉">
-        <template slot-scope="scope">
-          <i class="el-icon-success" type="primary" style="color:#409eff;" v-if="scope.row.weekKDJ"></i>
-        </template>
-      </el-table-column> -->
-      <el-table-column prop="weekKDJ" width="250px" label="周RSI" style="padding:0;">
+        width="250px"
+        label="周RSI"
+        style="padding: 0"
+      >
         <template slot-scope="scope">
           <svg width="250px" height="50px">
             <polyline
@@ -78,7 +61,12 @@
           {{ scope.row.weekRsi.last }}
         </template>
       </el-table-column>
-      <el-table-column prop="weekKDJ" width="250px" label="周RSI" style="padding:0;">
+      <el-table-column
+        prop="weekKDJ"
+        width="250px"
+        label="周RSI"
+        style="padding: 0"
+      >
         <template slot-scope="scope">
           <svg width="250px" height="50px">
             <polyline
@@ -120,21 +108,13 @@
           {{ scope.row.monthRsi.last }}
         </template>
       </el-table-column>
-      <!-- <el-table-column prop="monthKDJ" label="月kdj金叉">
-        <template slot-scope="scope">
-          <i
-            class="el-icon-success"
-            type="primary"
-            style="color: #409eff"
-            v-if="scope.row.monthKDJ"
-          ></i>
-        </template>
-      </el-table-column> -->
       <el-table-column prop="price" label="股价"> </el-table-column>
     </el-table>
-    <div>
-      <span style="margin-right:4px;" v-for="item in list" :key="item.code">{{item.code}}</span>
-    </div>
+    <ul>
+      <li style="margin-right: 4px" v-for="item in list" :key="item.code">{{
+        item.name
+      }}</li>
+    </ul>
   </div>
 </template>
 
@@ -166,16 +146,16 @@ export default {
       }
       rsi = [...rsi];
       let str = "";
-      let arr = rsi.map(item=>{
-        return 50 - (item)/1.5
-      })
-      let min = Math.min(...arr)
-      if(min < 0){
-        arr = arr.map(item=>{
-          item += -min
-          item += 2
-          return item
-        })
+      let arr = rsi.map((item) => {
+        return 50 - item / 1.5;
+      });
+      let min = Math.min(...arr);
+      if (min < 0) {
+        arr = arr.map((item) => {
+          item += -min;
+          item += 2;
+          return item;
+        });
       }
       arr.map((item, index) => {
         str += ` ${index * 8},${item.toFixed(2)} `;
@@ -203,17 +183,19 @@ export default {
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
           let weekList = await this.getWeekData(code);
-          if (weekList) {
-            let rsidata = this.computeIsMinRSI(weekList.rsi);
-            if (rsidata.value) {
+          if (data.state && weekList) {
+            let booldata = this.computeIsMinBoll(weekList.list, weekList.boll);
+            if (booldata) {
+              let rsidata = this.computeIsMinRSI(weekList.rsi);
               let item = {
-                state: data.state ? '央国企':'',
-                desc: data.desc || '',
+                state: data.state ? "央国企" : "",
+                desc: data.desc || "",
                 typeName: typeName,
                 code: code,
                 weekKDJ: false,
                 weekKDJ2: false,
                 weekRsi: rsidata,
+                weekBool: true,
                 monthRsi: 0,
                 dayKDJ: false,
                 monthKDJ: this.computeIsKDJ(weekList.kdj),
@@ -293,7 +275,19 @@ export default {
 
       return willKDJ && hasOneKDJ;
     },
-
+    computeIsMinBoll(list, boll) {
+      let lastPrice = list[list.length - 1][2];
+      let lowers = boll.lower;
+      let uppers = boll.upper;
+      let mids = boll.mid;
+      let lowerVal = lowers[lowers.length - 1];
+      let upperVal = uppers[uppers.length - 1];
+      let midVal = mids[mids.length - 1];
+      if (lastPrice > lowerVal && lastPrice < midVal) {
+        return true;
+      }
+      return false;
+    },
     computeIsMinRSI(list) {
       let rsi6 = list.rsi6;
       let length = rsi6.length;
@@ -436,6 +430,7 @@ export default {
                     resole({
                       kdj: indicator.kdj(list),
                       rsi: indicator.rsi(list2),
+                      boll: indicator.boll(list2),
                       list: list,
                     });
                   },
@@ -446,6 +441,7 @@ export default {
               resole({
                 kdj: indicator.kdj(list),
                 rsi: indicator.rsi(list2),
+                boll: indicator.boll(list2),
                 list: list,
               });
             }
