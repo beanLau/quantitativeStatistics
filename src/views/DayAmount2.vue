@@ -96,21 +96,30 @@ export default {
     clickCb() {
       this.isStop = !this.isStop;
     },
-    isMaxAmount(list){
-      // let value  = false
+    isMaxAmount(list, ma20s){
+      let value  = false
       let listData = [...list]
-      // for(let i = listData.length - 1; i > 5;i--){
-      //   let lastCount = listData[i][5]
-      //   let a = listData[i-1] ? listData[i-1][5] || 0 : 0
-      //   let b = listData[i-2] ? listData[i-2][5] || 0 : 0
-      //   let c = listData[i-3] ? listData[i-3][5] || 0 : 0
-      //   let d = listData[i-4] ? listData[i-4][5] || 0 : 0
-      //   let e = listData[i-5] ? listData[i-5][5] || 0 : 0
-      //   if(lastCount >= a + b+c +d +e){
-      //     value = true
-      //   }
-      // }
-      // return value
+      listData = listData.splice(listData.length - 30)
+      for(let i = listData.length - 1; i > 5;i--){
+        let lastCount = listData[i][5]
+        let a = listData[i-1] ? listData[i-1][5] || 0 : 0
+        let b = listData[i-2] ? listData[i-2][5] || 0 : 0
+        let c = listData[i-3] ? listData[i-3][5] || 0 : 0
+        let d = listData[i-4] ? listData[i-4][5] || 0 : 0
+        let e = listData[i-5] ? listData[i-5][5] || 0 : 0
+        if(lastCount >= a + b+c +d +e){
+          value = true
+        }
+      }
+      if(!value){
+        return false
+      }
+      let ma20 = ma20s[ma20s.length - 1]
+      let maxPrice = list[list.length - 1][3]
+      let minPrice = list[list.length - 1][4]
+      return maxPrice > ma20 && minPrice < ma20
+      
+      return value
       let lastCount = listData.pop()[5]
       let totalCount = 0
       for(let i = 0;i< 8 ;i++){
@@ -150,7 +159,7 @@ export default {
           arr[1] = arr[1].toLocaleLowerCase();
           let code = arr.reverse().join("");
           let dayObj = await this.getDayData(code);
-          if(dayObj && dayObj.qfqday && this.isMaxAmount(dayObj.qfqday)){
+          if(dayObj && dayObj.qfqday && this.isMaxAmount(dayObj.qfqday, dayObj.ma20)){
             let listItem = {
               typeName: typeName,
               code: code,
@@ -292,7 +301,7 @@ export default {
     getDayData(code) {
       return new Promise((resole) => {
         let endTime = moment(Date.now()).format("YYYY-MM-DD");
-        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 30).format(
+        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 200).format(
           "YYYY-MM-DD"
         );
         request
@@ -319,6 +328,8 @@ export default {
               resole({
                 // kdj: indicator.kdj(list),
                 // rsi: indicator.rsi(list2),
+                ma5: indicator.ma(list2, 5),
+                ma20: indicator.ma(list2, 20),
                 qfqday: qfqday,
                 list: list,
                 datas: res.data[code].qt[code],

@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button type="primary" @click="clickCb">主要按钮</el-button>
-    <el-table :data="list" max-height="500" border style="width: 100%">
+    <el-table :data="listFilter" max-height="500" border style="width: 100%">
       <el-table-column prop="typeName" label="类型"> </el-table-column>
       <el-table-column prop="code" label="编号">
         <template slot-scope="scope">
@@ -132,9 +132,9 @@
       </el-table-column> -->
       <el-table-column prop="price" label="股价"> </el-table-column>
     </el-table>
-    <div>
-      <span style="margin-right:4px;" v-for="item in list" :key="item.code">{{item.code}}</span>
-    </div>
+    <ul>
+      <li style="margin-right:4px;" v-for="item in listFilter" :key="item.code">{{item.name}}</li>
+    </ul>
   </div>
 </template>
 
@@ -154,6 +154,13 @@ export default {
       list: [],
       codeList: [],
     };
+  },
+  computed: {
+    listFilter(){
+      return this.list.filter(item=>{
+        return item.ttm <= 20 && item.ttm > 0
+      })
+    }
   },
   mounted() {
     this.init();

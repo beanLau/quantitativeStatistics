@@ -136,6 +136,9 @@ export default {
         var mas = [];
         for (var i = 0; i < ticks.length; i++) {
             maSum += ticks[i];
+            if(i > days - 1){
+                maSum -= ticks[i - days];
+            }
             let ma = maSum / days;
             mas.push(ma);
         }
