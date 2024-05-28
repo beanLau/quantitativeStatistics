@@ -7,7 +7,7 @@
         <template slot-scope="scope">
           <div style="font-size: 12px">
             <div>编号: {{ scope.row.code }}</div>
-            <div>名称: {{ scope.row.name }}</div>
+            <div :style="{color: scope.row.state ? 'red': ''}">名称: {{scope.row.name}} {{scope.row.state}}</div>
             <div>{{ scope.row.market }}（亿） {{ scope.row.ttm }}</div>
           </div>
         </template>
@@ -229,6 +229,7 @@ export default {
             let kdjValue = this.computeIsKDJ(weekList.kdj);
             if (kdjValue.value) {
               let item = {
+                state: data.state ? '央国企':'',
                 typeName: typeName,
                 code: code,
                 weekKDJ: kdjValue,

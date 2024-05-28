@@ -212,7 +212,7 @@ export default {
           let weekList = await this.getWeekData(code);
           if (weekList) {
             let rsidata = this.computeIsMinRSI(weekList.rsi);
-            if (rsidata.value) {
+            if (rsidata && rsidata.value) {
               let item = {
                 state: data.state ? '央国企':'',
                 desc: data.desc || '',

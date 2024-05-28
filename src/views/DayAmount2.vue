@@ -7,7 +7,7 @@
         <template slot-scope="scope">
           <div style="font-size: 12px">
             <div>编号: {{ scope.row.code }}</div>
-            <div>名称: {{ scope.row.name }}</div>
+            <div :style="{color: scope.row.state ? 'red': ''}">名称: {{ scope.row.name }}</div>
             <div>{{ scope.row.market }}（亿） {{ scope.row.ttm }}</div>
           </div>
         </template>
@@ -298,6 +298,19 @@ export default {
         list: list,
       };
     },
+    getCurrentData(code){
+      return new Promise((resole) => {
+        request
+          .get(
+            `https://qt.gtimg.cn/q=${code}`
+          )
+          .then(async (res) => {
+            let data = res.split('~')
+            //日期，开盘、收盘、最高、最低、量
+            resole([data[5],data[3],data[33],data[34],data[6]])
+          })
+      })
+    },
     getDayData(code) {
       return new Promise((resole) => {
         let endTime = moment(Date.now()).format("YYYY-MM-DD");
@@ -308,8 +321,13 @@ export default {
           .get(
             `https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=${code},day,${beginTime},${endTime},500,qfq`
           )
-          .then((res) => {
+          .then(async (res) => {
             let qfqday = res.data[code].qfqday || [];
+            if(qfqday.length && qfqday[qfqday.length - 1] && qfqday[qfqday.length - 1][0] != beginTime){
+              let currentdata = await this.getCurrentData(code)
+              currentdata.unshift(endTime)
+              qfqday.push(currentdata)
+            }
             let list = [];
             let list2 = [];
             qfqday.map((item) => {

@@ -113,7 +113,7 @@ export default {
       // return value
       let lastCount = listData.pop()[5]
       let totalCount = 0
-      for(let i = 0;i< 8 ;i++){
+      for(let i = 0;i< 6 ;i++){
         let item = listData.pop() || []
         totalCount += (item[5] || 0)
       }
@@ -289,6 +289,19 @@ export default {
         list: list,
       };
     },
+    getCurrentData(code){
+      return new Promise((resole) => {
+        request
+          .get(
+            `https://qt.gtimg.cn/q=${code}`
+          )
+          .then(async (res) => {
+            let data = res.split('~')
+            //日期，开盘、收盘、最高、最低、量
+            resole([data[5],data[3],data[33],data[34],data[6]])
+          })
+      })
+    },
     getDayData(code) {
       return new Promise((resole) => {
         let endTime = moment(Date.now()).format("YYYY-MM-DD");
@@ -299,8 +312,13 @@ export default {
           .get(
             `https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=${code},day,${beginTime},${endTime},500,qfq`
           )
-          .then((res) => {
+          .then(async (res) => {
             let qfqday = res.data[code].qfqday || [];
+            if(qfqday.length && qfqday[qfqday.length - 1] && qfqday[qfqday.length - 1][0] != beginTime){
+              let currentdata = await this.getCurrentData(code)
+              currentdata.unshift(endTime)
+              qfqday.push(currentdata)
+            }
             let list = [];
             let list2 = [];
             qfqday.map((item) => {
