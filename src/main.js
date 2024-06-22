@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'echarts'
+import Echarts from "vue-echarts"
+Vue.component('lwt-charts', Echarts)
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false

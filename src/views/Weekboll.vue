@@ -2,6 +2,20 @@
   <div>
     <el-button type="primary" @click="clickCb">主要按钮</el-button>
     <el-table :data="list" max-height="500" border style="width: 100%">
+      <el-table-column type="expand">
+        <template slot-scope="scope">
+            <chart-k :optionData="scope.row.weekList" style="width:100%;height:300px;"></chart-k>
+        </template>
+      </el-table-column>
+      <template prop="selet" label="选择">
+        <template slot-scope="scope">
+          <el-switch
+            v-model="scope.row.select"
+            active-color="#13ce66"
+            inactive-color="#ff4949">
+          </el-switch>
+        </template>
+      </template>
       <el-table-column prop="typeName" label="类型"> </el-table-column>
       <el-table-column prop="code" label="编号">
         <template slot-scope="scope">
@@ -13,35 +27,6 @@
             <div>描述: {{ scope.row.desc }}</div>
             <div>{{ scope.row.market }}（亿） {{ scope.row.ttm }}</div>
           </div>
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="weekKDJ"
-        width="250px"
-        label="周RSI"
-        style="padding: 0"
-      >
-        <template slot-scope="scope">
-          <svg width="250px" height="50px">
-            <polyline
-              width="350px"
-              height="50px"
-              :points="getRsiPoints(scope.row.weekRsi.list.rsi6)"
-              style="fill: none; stroke: #666; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="350px"
-              height="50px"
-              :points="getRsiPoints(scope.row.weekRsi.list.rsi12)"
-              style="fill: none; stroke: #f4c063; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="350px"
-              height="50px"
-              :points="getRsiPoints(scope.row.weekRsi.list.rsi24)"
-              style="fill: none; stroke: #b663f4; stroke-width: 1px"
-            ></polyline>
-          </svg>
         </template>
       </el-table-column>
       <el-table-column prop="weekRsi" label="周RSI-Min">
@@ -59,35 +44,6 @@
             v-if="scope.row.weekRsi.value == 2"
           ></i>
           {{ scope.row.weekRsi.last }}
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="weekKDJ"
-        width="250px"
-        label="周RSI"
-        style="padding: 0"
-      >
-        <template slot-scope="scope">
-          <svg width="250px" height="50px">
-            <polyline
-              width="350px"
-              height="50px"
-              :points="getRsiPoints(scope.row.monthRsi.list.rsi6)"
-              style="fill: none; stroke: #666; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="350px"
-              height="50px"
-              :points="getRsiPoints(scope.row.monthRsi.list.rsi12)"
-              style="fill: none; stroke: #f4c063; stroke-width: 1px"
-            ></polyline>
-            <polyline
-              width="350px"
-              height="50px"
-              :points="getRsiPoints(scope.row.monthRsi.list.rsi24)"
-              style="fill: none; stroke: #b663f4; stroke-width: 1px"
-            ></polyline>
-          </svg>
         </template>
       </el-table-column>
 
@@ -110,23 +66,30 @@
       </el-table-column>
       <el-table-column prop="price" label="股价"> </el-table-column>
     </el-table>
-    <ul>
-      <li style="margin-right: 4px" v-for="item in list" :key="item.code">{{
-        item.name
-      }}</li>
-    </ul>
+    <div>
+      <span style="margin-right: 4px" v-for="item in selectList" :key="item.code">{{ item.name }}、</span>
+    </div>
   </div>
 </template>
 
 <script>
+import chartK from "../components/chart-k.vue"
 import request from "../utils/request";
 import indicator from "../utils/indicator";
 import moment, { min } from "moment";
 import allCode from "../all.js";
-let allCodeList = [allCode[0]];
+// let allCode = [{
+//   "name": "中水渔业",
+//   "scale": 3.36666045E+9,
+//   "state": true,
+//   "desc": "中国农业发展集团有限公司",
+//   "id": "000798.SZ"
+// }]
 export default {
   name: "Home",
-  components: {},
+  components: {
+    chartK
+  },
   data() {
     return {
       isStop: false,
@@ -139,6 +102,26 @@ export default {
     this.init();
   },
   methods: {
+    getWeekPricePoints(row) {
+      let weekPrices = row.weekPrices;
+      let cha = weekPrices.length - 100;
+      if (cha > 0) {
+        weekPrices = weekPrices.splice(cha);
+      }
+      weekPrices = [...weekPrices];
+      let max = Math.max(...weekPrices);
+      let min = Math.min(...weekPrices);
+      //计算最大值和最小值的差值，让差值为50，计算比例
+      let bili = 200 / max;
+      weekPrices = weekPrices.map((item) => {
+        return 200 - item * bili;
+      });
+      let str = "";
+      weekPrices.map((item, index) => {
+        str += ` ${index * 8},${item.toFixed(2)} `;
+      });
+      return str;
+    },
     getRsiPoints(rsi) {
       let cha = rsi.length - 30;
       if (cha > 0) {
@@ -201,6 +184,10 @@ export default {
                 monthKDJ: this.computeIsKDJ(weekList.kdj),
                 price: 0,
                 name: "",
+                weekPrices: weekList.list.map((list) => {
+                  return list[2];
+                }),
+                weekList: weekList
               };
               let dayList = await this.getDayData(code);
               if (dayList) {
@@ -229,6 +216,7 @@ export default {
                   } else if (monthList) {
                     item.monthKDJ2 = false;
                   }
+                  item.select = false
                   this.list.push(item);
                 }
               }
@@ -378,8 +366,8 @@ export default {
                   item[index] = parseFloat(price);
                 }
               });
-              //最高，最低，收盘
-              list.push([item[3], item[4], item[2]]);
+              //最高，最低，收盘, 开盘价
+              list.push([item[3], item[4], item[2], item[1]]);
               list2.push(item[2]);
             });
             if (list.length == 0) {
@@ -400,7 +388,7 @@ export default {
       return new Promise((resole) => {
         let endTime = moment().format("YYYY-MM-DD");
         let beginTime = moment(
-          Date.now() - 1000 * 60 * 60 * 24 * 30 * 12 * 3
+          Date.now() - 1000 * 60 * 60 * 24 * 30 * 12 * 5
         ).format("YYYY-MM-DD");
         request
           .get(
@@ -432,6 +420,7 @@ export default {
                       rsi: indicator.rsi(list2),
                       boll: indicator.boll(list2),
                       list: list,
+                      dataList: qfqweek
                     });
                   },
                   awaitTime < 50 ? 50 - awaitTime : 50
@@ -443,6 +432,7 @@ export default {
                 rsi: indicator.rsi(list2),
                 boll: indicator.boll(list2),
                 list: list,
+                dataList: qfqweek
               });
             }
           });
@@ -486,6 +476,13 @@ export default {
       });
     },
   },
+  computed: {
+    selectList(){
+      return this.list.find(item=>{
+        return !!item.select
+      })
+    }
+  }
 };
 </script>
 

@@ -1,10 +1,12 @@
 <template>
   <div>
     <!-- <courseware-player :defaultUrl="defaultUrl" ref="coursewarePlayer" :width="width" :height="height" style="background-color: transparent"> </courseware-player> -->
+    <chartK style="width:400px;height:200px;"></chartK>
   </div>
 </template>
 
 <script>
+import chartK from "../components/chart-k.vue"
 import request from "../utils/request";
 import indicator from "../utils/indicator";
 import moment from "moment";
@@ -14,7 +16,7 @@ let allCodeList = [allCode[0]]
 export default {
   name: "Home",
   components: {
-    //CoursewarePlayer
+    chartK
   },
   data() {
     return {
