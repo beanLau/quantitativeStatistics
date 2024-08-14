@@ -229,7 +229,7 @@ export default {
             let kdjValue = this.computeIsKDJ(weekList.kdj);
             if (kdjValue.value) {
               let item = {
-                state: data.state ? '央国企':'',
+                //state: item.state ? '央国企':'',
                 typeName: typeName,
                 code: code,
                 weekKDJ: kdjValue,

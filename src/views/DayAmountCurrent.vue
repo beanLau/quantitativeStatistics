@@ -1,7 +1,11 @@
 <template>
   <div>
-    <!-- <el-button type="primary" @click="clickCb">主要按钮</el-button> -->
     <el-table :data="list" max-height="100%" border style="width: 100%">
+      <el-table-column type="expand">
+        <template slot-scope="scope">
+            <chart-k :optionData="scope.row.dayList" style="width:100%;height:300px;"></chart-k>
+        </template>
+      </el-table-column>
       <el-table-column prop="typeName" label="类型"> </el-table-column>
       <el-table-column prop="code" label="编号">
         <template slot-scope="scope">
@@ -15,33 +19,26 @@
       <el-table-column prop="weekKDJ" width="250px" label="量" style="padding:0;">
         <template slot-scope="">
           <svg width="250px" height="50px">
-            <!-- <polyline
-              width="350px"
-              height="50px"
-              :points="getCountPoints(scope.row.qfqday)"
-              style="fill: none; stroke: #666; stroke-width: 1px"
-            ></polyline> -->
-            <!-- <line v-for="item" x="0" y="0" fill="red" height="100" width="2"> </line> -->
           </svg>
         </template>
       </el-table-column>
       <el-table-column prop="price" label="股价"> </el-table-column>
     </el-table>
-    <ul>
-      <li v-for="item in list" :key="item.code">{{ item.name }}</li>
-    </ul>
   </div>
 </template>
 
 <script>
+import chartK from "../components/chart-k.vue"
 import request from "../utils/request";
 import indicator from "../utils/indicator";
 import moment from "moment";
 import allCode from "../all.js";
 let allCodeList = [allCode[0]];
 export default {
-  name: "Home",
-  components: {},
+  name: "DayAmountCurrent",
+  components: {
+    chartK
+  },
   data() {
     return {
       isStop: false,
@@ -167,6 +164,7 @@ export default {
               qfqday: dayObj.qfqday,
               price: dayObj.list[dayObj.list.length - 1],
               name: '',
+              dayList: dayObj
             };
             listItem.name = dayObj.datas[1];
             this.list.push(listItem);
@@ -314,7 +312,7 @@ export default {
     getDayData(code) {
       return new Promise((resole) => {
         let endTime = moment(Date.now()).format("YYYY-MM-DD");
-        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 200).format(
+        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 700).format(
           "YYYY-MM-DD"
         );
         request
@@ -351,6 +349,11 @@ export default {
                 qfqday: qfqday,
                 list: list,
                 datas: res.data[code].qt[code],
+                kdj: indicator.kdj(list),
+                rsi: indicator.rsi(list2),
+                boll: indicator.boll(list2),
+                dataList: qfqday
+
               });
             }
           });

@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button type="primary" @click="clickCb">主要按钮</el-button>
-    <el-table :data="list" max-height="500" border style="width: 100%">
+    <el-table :data="list" max-height="100%" border style="width: 100%">
       <el-table-column type="expand">
         <template slot-scope="scope">
             <chart-k :optionData="scope.row.weekList" style="width:100%;height:300px;"></chart-k>

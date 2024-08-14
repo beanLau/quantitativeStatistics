@@ -91,12 +91,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/DayAmount.vue')
   },
   {
-    path: '/dayamount2',
-    name: 'dayamount2',
+    path: '/dayamountcurrent',
+    name: 'dayamountcurrent',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/DayAmount2.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/DayAmountCurrent.vue')
   }
 ]
 

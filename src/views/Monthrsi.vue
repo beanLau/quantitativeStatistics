@@ -2,6 +2,11 @@
   <div>
     <el-button type="primary" @click="clickCb">主要按钮</el-button>
     <el-table :data="list" max-height="500" border style="width: 100%">
+      <el-table-column type="expand">
+        <template slot-scope="scope">
+            <chart-k :optionData="scope.row.dayList" style="width:100%;height:300px;"></chart-k>
+        </template>
+      </el-table-column>
       <el-table-column prop="typeName" label="类型"> </el-table-column>
       <el-table-column prop="code" label="编号">
         <template slot-scope="scope">
@@ -136,6 +141,7 @@
 </template>
 
 <script>
+import chartK from "../components/chart-k.vue"
 import request from "../utils/request";
 import indicator from "../utils/indicator";
 import moment, { min } from "moment";
@@ -143,7 +149,9 @@ import allCode from "../all.js";
 let allCodeList = [allCode[0]];
 export default {
   name: "Home",
-  components: {},
+  components: {
+    chartK
+  },
   data() {
     return {
       isStop: false,
@@ -222,6 +230,7 @@ export default {
                 item.name = dayList.datas[1];
                 item.market = dayList.datas[45];
                 item.ttm = dayList.datas[39];
+                item.dayList = dayList
                 let list = dayList.list;
                 if (list) {
                   item.price = list[list.length - 1][2];
@@ -361,18 +370,36 @@ export default {
       }
       return false;
     },
+    getCurrentData(code){
+      return new Promise((resole) => {
+        request
+          .get(
+            `https://qt.gtimg.cn/q=${code}`
+          )
+          .then(async (res) => {
+            let data = res.split('~')
+            //日期，开盘、收盘、最高、最低、量
+            resole([data[5],data[3],data[33],data[34],data[6]])
+          })
+      })
+    },
     getDayData(code) {
       return new Promise((resole) => {
-        let endTime = moment().format("YYYY-MM-DD");
-        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 30).format(
+        let endTime = moment(Date.now()).format("YYYY-MM-DD");
+        let beginTime = moment(Date.now() - 1000 * 60 * 60 * 24 * 700).format(
           "YYYY-MM-DD"
         );
         request
           .get(
             `https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=${code},day,${beginTime},${endTime},500,qfq`
           )
-          .then((res) => {
+          .then(async (res) => {
             let qfqday = res.data[code].qfqday || [];
+            if(qfqday.length && qfqday[qfqday.length - 1] && qfqday[qfqday.length - 1][0] != beginTime){
+              let currentdata = await this.getCurrentData(code)
+              currentdata.unshift(endTime)
+              qfqday.push(currentdata)
+            }
             let list = [];
             let list2 = [];
             qfqday.map((item) => {
@@ -393,6 +420,12 @@ export default {
                 rsi: indicator.rsi(list2),
                 list: list,
                 datas: res.data[code].qt[code],
+
+                ma5: indicator.ma(list2, 5),
+                ma20: indicator.ma(list2, 20),
+                qfqday: qfqday,
+                boll: indicator.boll(list2),
+                dataList: qfqday
               });
             }
           });

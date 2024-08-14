@@ -11,7 +11,7 @@
       <router-link to="/daykdj">daykdj</router-link>
       <router-link to="/weekamount">weekamount</router-link>
       <router-link to="/dayamount">dayamount</router-link>
-      <router-link to="/dayamount2">dayamount2</router-link>
+      <router-link to="/dayamountcurrent">dayamountcurrent</router-link>
     </div>
     <router-view/>
   </div>

@@ -59,7 +59,7 @@ export default {
             let res = params[0].name + '<br/>'
             params.map(param=>{
               if(param.seriesName === 'k'){
-                res += `开:${param.value[0]} 收:${param.value[0]} 低:${param.value[0]} 高:${param.value[0]} <br/>`
+                res += `开:${param.value[0]} 收:${param.value[1]} 低:${param.value[2]} 高:${param.value[3]} <br/>`
               }else if(param.seriesName === 'LOW'){
                 res += `boll-low: ${param.value.toFixed(2)}  <br/>`
               }else if(param.seriesName === 'MID'){
