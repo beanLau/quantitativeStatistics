@@ -35,7 +35,7 @@ import moment from "moment";
 import allCode from "../all.js";
 let allCodeList = [allCode[0]];
 export default {
-  name: "DayAmountCurrent",
+  name: "DayAmountHistory",
   components: {
     chartK
   },
